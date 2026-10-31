@@ -1,87 +1,102 @@
 <!doctype html>
-<html lang="en-CA" class="no-js" data-city="toronto" data-home="/toronto/">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Toronto Plated — Beautiful food. Made in Toronto.</title>
-<meta name="description" content="Toronto Plated is an ongoing visual collection of beautiful food made in Toronto — part of Plated, a gallery of food photography, city by city.">
-<link rel="canonical" href="https://plated.gallery/toronto/">
+<title>Plated — A world of beautiful food</title>
+<meta name="description" content="Plated is a gallery of beautiful food photography, city by city. Ottawa, Toronto, Montréal, New York.">
+<link rel="canonical" href="https://plated.gallery/">
 <meta name="theme-color" content="#0b0a08">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Plated">
-<meta property="og:title" content="Toronto Plated — Beautiful food. Made in Toronto.">
-<meta property="og:description" content="A visual collection of beautiful food made in Toronto.">
-<meta property="og:url" content="https://plated.gallery/toronto/">
-<meta property="og:locale" content="en_CA">
+<meta property="og:title" content="Plated — A world of beautiful food">
+<meta property="og:description" content="A gallery of beautiful food photography, city by city.">
+<meta property="og:url" content="https://plated.gallery/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/assets/world.css?v=20261031a">
-<script>document.documentElement.classList.remove('no-js')</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
- {"@type":"WebSite","@id":"https://plated.gallery/#site","name":"Plated","url":"https://plated.gallery/","description":"A gallery of beautiful food photography, city by city."},
- {"@type":"CollectionPage","@id":"https://plated.gallery/toronto/#collection","name":"Toronto Plated","url":"https://plated.gallery/toronto/","isPartOf":{"@id":"https://plated.gallery/#site"},"about":{"@type":"City","name":"Toronto"}}
-]}
+{"@context":"https://schema.org","@type":"WebSite","name":"Plated","url":"https://plated.gallery/","description":"A gallery of beautiful food photography, city by city."}
 </script>
+<style>
+  :root {
+    --bg: #0b0a08;
+    --ink: #ece6d8;
+    --mute: rgba(236, 230, 216, .55);
+    --faint: rgba(236, 230, 216, .28);
+    --line: rgba(236, 230, 216, .14);
+    --out: cubic-bezier(.16, 1, .3, 1);
+    --ease: cubic-bezier(.7, 0, .2, 1);
+    --pad: clamp(16px, 2.4vw, 32px);
+    --sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --mono: 'Geist Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color: var(--ink); }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: grid; place-items: center;
+    padding: var(--pad);
+    font-family: var(--sans); -webkit-font-smoothing: antialiased;
+    background: radial-gradient(60% 55% at 50% 46%, #1b1812 0%, #100e0b 50%, var(--bg) 85%) fixed;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 1px solid var(--ink); outline-offset: 6px; }
+
+  .plaque { width: min(100%, 920px); text-align: center; }
+
+  /* wordmark */
+  h1 { display: flex; justify-content: center; overflow: hidden; font-weight: 400; font-size: clamp(44px, 9vw, 104px); letter-spacing: .02em; line-height: 1; padding-bottom: .04em; }
+  h1 span { display: block; transform: translateY(105%); animation: rise 1.2s var(--out) forwards; }
+  h1 span:nth-child(2) { animation-delay: .07s; } h1 span:nth-child(3) { animation-delay: .14s; }
+  h1 span:nth-child(4) { animation-delay: .21s; } h1 span:nth-child(5) { animation-delay: .28s; }
+  h1 span:nth-child(6) { animation-delay: .35s; }
+
+  .tag { margin-top: clamp(14px, 2vh, 22px); font-size: clamp(12px, 1.2vw, 14px); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); opacity: 0; animation: fade 1s var(--out) .7s forwards; }
+
+  .rule { height: 1px; margin: clamp(40px, 7vh, 72px) 0 clamp(28px, 4.5vh, 44px); background: var(--line); transform: scaleX(0); animation: draw 1.4s var(--ease) .9s forwards; }
+
+  .domain { font-size: clamp(16px, 1.6vw, 19px); font-weight: 300; letter-spacing: .01em; opacity: 0; animation: fade 1s var(--out) 1.3s forwards; }
+
+  /* the cities */
+  .cities { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px clamp(18px, 2.6vw, 30px); margin-top: clamp(16px, 2.4vh, 22px); }
+  .cities li { opacity: 0; transform: translateY(8px); animation: settle .9s var(--out) forwards; animation-delay: calc(1.45s + var(--i) * .08s); }
+  .cities a, .cities .soon { position: relative; display: inline-block; padding: 8px 0; font: 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+  .cities a { color: var(--ink); }
+  .cities a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 3px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .6s var(--ease); }
+  .cities a:hover::after, .cities a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+  .cities .soon { color: var(--faint); cursor: default; }
+  .cities .soon small { position: absolute; left: 50%; top: 100%; transform: translate(-50%, -2px); font: 9px var(--mono); letter-spacing: .14em; white-space: nowrap; color: var(--faint); opacity: 0; transition: opacity .4s; }
+  .cities .soon:hover small { opacity: 1; }
+  @media (hover: none) { .cities .soon small { opacity: 1; } .cities { row-gap: 22px; } }
+
+  @keyframes rise { to { transform: none; } }
+  @keyframes fade { to { opacity: 1; } }
+  @keyframes settle { to { opacity: 1; transform: none; } }
+  @keyframes draw { to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
+  }
+</style>
 </head>
 <body>
-<a class="skip" href="#index">Skip to the collection</a>
-
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="ld-word"><span>P</span><span>L</span><span>A</span><span>T</span><span>E</span><span>D</span></div>
-  <p class="ld-tag">Beautiful food. Made in Toronto.</p>
-  <div class="ld-foot">
-    <span class="mono" id="ld-pct">000</span>
-    <button class="enter" id="enter" type="button" tabindex="-1">Enter</button>
-    <span class="mono">Toronto, ON</span>
-  </div>
-</div>
-
-<canvas class="world" id="world" aria-hidden="true"></canvas>
-
-<header class="hud hud-top">
-  <a class="mark" href="/toronto/" aria-label="Toronto Plated — home">TORONTO<b>PLATED</b></a>
-  <nav class="nav" aria-label="Primary">
-    <a href="/toronto/about.html"><i>01</i>About</a>
-    <a href="/toronto/submit.html"><i>02</i>Submit</a>
-    <a href="/"><i>03</i>Cities</a>
+<main class="plaque">
+  <h1 aria-label="Plated"><span>P</span><span>L</span><span>A</span><span>T</span><span>E</span><span>D</span></h1>
+  <p class="tag">A world of beautiful food.</p>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="domain">plated.gallery</p>
+  <nav aria-label="Cities">
+    <ul class="cities">
+      <!-- Ottawa moves to /ottawa/ later; until then it lives at ottawaplated.com -->
+      <li style="--i:0"><a href="https://ottawaplated.com/">Ottawa</a></li>
+      <li style="--i:1"><a href="/toronto/">Toronto</a></li>
+      <li style="--i:2"><span class="soon">Montréal<small>Soon</small></span></li>
+      <li style="--i:3"><span class="soon">New York<small>Soon</small></span></li>
+    </ul>
   </nav>
-</header>
-
-<div class="hud hud-bottom" aria-hidden="true">
-  <p class="count"><!--PREVIEW:START--><!--PREVIEW:END--><span id="count"><!--COUNT:START-->0 plates<!--COUNT:END--></span></p>
-</div>
-
-<div class="cursor" id="cursor" aria-hidden="true">
-  <svg viewBox="0 0 60 60"><circle class="cur-track" cx="30" cy="30" r="26"/><circle class="cur-prog" cx="30" cy="30" r="26"/></svg>
-  <span class="cur-label">Drag</span>
-</div>
-
-<main id="main">
-  <h1 class="sr">Toronto Plated — beautiful food, made in Toronto</h1>
-  <section class="index" id="index" aria-label="The Collection">
-    <div class="ix-head">
-      <p class="mono">The Collection</p>
-      <p class="ix-lede">A visual journal of the dishes, details and delicious things that make Toronto worth looking at.</p>
-    </div>
-    <ol class="grid" id="grid"><!--GALLERY:START--><!--GALLERY:END--></ol>
-    <footer class="ix-foot">
-      <p>© Plated</p>
-      <p><a href="/toronto/about.html">About</a><a href="/toronto/submit.html">Submit a dish</a><a href="/">Cities</a></p>
-    </footer>
-  </section>
 </main>
-
-<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="Photograph detail" hidden>
-  <button type="button" class="rv-close" id="rv-close">Close</button>
-  <div class="rv-body" id="rv-body"></div>
-</div>
-
-<!--DATA:START--><script type="application/json" id="seed">{"items":[],"total":0}</script><!--DATA:END-->
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
-<script type="module" src="/assets/world.js?v=20261031a"></script>
 </body>
 </html>
