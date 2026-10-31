@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plated</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0a08">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<script>
+  // A dish published since the last rebuild has no page of its own yet:
+  // send it to its city's globe, which opens the plate straight away.
+  (function () {
+    var m = location.pathname.match(/^\/([a-z]+(?:-[a-z]+)*)\/dish\/([a-z0-9-]+)\.html$/);
+    if (m) location.replace('/' + m[1] + '/?plate=' + m[2]);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400&family=Geist+Mono:wght@400&display=swap">
+<style>
+  html { background: #0b0a08; color: #ece6d8; }
+  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; text-align: center; padding: 24px; box-sizing: border-box;
+    font-family: 'Geist', system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+    background: radial-gradient(60% 55% at 50% 46%, #1b1812 0%, #100e0b 50%, #0b0a08 85%) fixed; }
+  p { margin: 0; }
+  .cap { font: 11px 'Geist Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: rgba(236, 230, 216, .55); }
+  h1 { margin: 18px 0 28px; font-weight: 300; font-size: clamp(26px, 4vw, 40px); letter-spacing: -.01em; }
+  a { color: inherit; font: 12px 'Geist Mono', monospace; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(236, 230, 216, .3); padding-bottom: 4px; }
+  a:hover { border-color: #ece6d8; }
+</style>
+</head>
+<body>
+<main>
+  <p class="cap">Not found</p>
+  <h1>This page isn’t in the gallery.</h1>
+  <a href="/">Return to Plated</a>
+</main>
+</body>
+</html>
