@@ -10,10 +10,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://plated.gallery/ottawa/about.html</loc>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://plated.gallery/ottawa/submit.html</loc>
     <priority>0.3</priority>
   </url>
@@ -291,10 +287,6 @@
     <loc>https://plated.gallery/toronto/</loc>
     <lastmod>2026-11-01</lastmod>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://plated.gallery/toronto/about.html</loc>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://plated.gallery/toronto/submit.html</loc>
