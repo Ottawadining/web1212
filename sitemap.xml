@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
@@ -14,10 +14,82 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/ottawa/dish/stuffed-morels-fauna.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/92563ef0-15ce-4489-8583-abc75a755349-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/yuba-wild-rose-and-sunchoke-antheia.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/23ad3887-f8e7-48f3-9192-bb5c9f85179b-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/stuffed-cornish-hen-stofa.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f442b65c-75fa-4807-8778-e6b397a6ab5e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/tuna-crudo-gitanes.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/bcb2a638-b45c-4512-ae0b-28e35f822fd4-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/petaline-atelier.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/419d749b-8411-4c93-80d8-f5d6e241bd6a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/scallops-sussex-and-co.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2e5e47ff-6e3e-496e-bbf3-2e623b0d23ac-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/burrata-restaurant-e18hteen.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/52632ab5-1cbe-471e-8e42-122e77af0dbc-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/french-onion-soup-metropolitain-brasserie.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/7c72cca3-dd38-4f6c-8dea-c8be7881353e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/halibut-feast-revel.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/cf2ebb52-599d-4a04-8563-25c1b79660ab-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/shiozuke-cucumber-salad-riviera.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/28ba636d-fd14-4513-9c8c-bb837536729e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/octapodaki-aroma-meze.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/5d7fa80d-992b-471f-9e0d-ea25eb3195b1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/nashville-chicken-sandwich-union613.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8b5e06f7-9d40-48c0-9066-5728920c52f1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/ottawa/dish/fire-dragon-j-unique-kitchen.html</loc>
     <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
-    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/131940f8-3510-4042-8cb7-4f633bb1ac47-1600.webp</image:loc></image:image>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/35f46819-cee9-4aa2-af52-19e07a74401c-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/dish/the-fearless-sandwich-pure-kitchen.html</loc>
@@ -122,12 +194,6 @@
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/553667a6-9112-4923-9a51-593e220d4a6d-orig.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://plated.gallery/ottawa/dish/falafel-salad-sula-wok.html</loc>
-    <lastmod>2026-10-24</lastmod>
-    <priority>0.7</priority>
-    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/018447ef-a4cd-4be5-855b-d1257971be39-orig.png</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://plated.gallery/ottawa/dish/carbonara-la-roma.html</loc>
     <lastmod>2026-10-24</lastmod>
     <priority>0.7</priority>
@@ -150,12 +216,6 @@
     <lastmod>2026-10-24</lastmod>
     <priority>0.7</priority>
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/85edb7b7-0bc6-4a58-9988-6b8952af998c-orig.png</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://plated.gallery/ottawa/dish/paloma-pizza-pi-squared.html</loc>
-    <lastmod>2026-10-24</lastmod>
-    <priority>0.7</priority>
-    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a249e8b0-578d-436d-86aa-6d52ecc57b1f-orig.png</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/dish/hamachi-crudo-norca.html</loc>
