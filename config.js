@@ -5,7 +5,6 @@
 // NEVER put the service_role key in this file (or anywhere in this repository).
 //
 // CITIES: every city with a folder in this repo (plated.gallery/<key>/).
-// Ottawa joins here when it moves over from ottawaplated.com.
 
 export default {
   SITE_URL: 'https://plated.gallery',
@@ -14,6 +13,7 @@ export default {
   SUPABASE_ANON_KEY: 'sb_publishable_MWvsjF5YKAR7wVGd30uShQ_gpRVw05T',
   PAGE_SIZE: 18,
   CITIES: {
+    ottawa: { name: 'Ottawa', region: 'ON', country: 'CA' },
     toronto: { name: 'Toronto', region: 'ON', country: 'CA' },
   },
 };
