@@ -57,9 +57,8 @@ function dishDocument(d) {
 <header class="hud">
   <a class="mark" href="${home}" aria-label="${esc(name)} Plated — home">${esc(name.toUpperCase())}<b>PLATED</b></a>
   <nav class="nav" aria-label="Primary">
-    <a href="${home}about.html"><i>01</i>About</a>
-    <a href="${home}submit.html"><i>02</i>Submit</a>
-    <a href="/"><i>03</i>Cities</a>
+    <a href="${home}submit.html"><i>01</i>Submit</a>
+    <a href="/"><i>02</i>Cities</a>
   </nav>
 </header>
 
@@ -79,7 +78,7 @@ function dishDocument(d) {
 
 <footer class="foot">
   <p>© Plated</p>
-  <p><a href="${home}">The Collection</a><a href="/">Cities</a><a href="${home}about.html">About</a><a href="${home}submit.html">Submit a dish</a></p>
+  <p><a href="${home}">The Collection</a><a href="/">Cities</a><a href="${home}submit.html">Submit a dish</a></p>
 </footer>
 </body>
 </html>
@@ -123,7 +122,6 @@ async function main() {
     const today = new Date().toISOString().slice(0, 10);
     urls.push(
       { loc: SITE + cityPath(city), lastmod: all[0] ? all[0].date.slice(0, 10) : today, pri: '0.9' },
-      { loc: `${SITE + cityPath(city)}about.html`, pri: '0.4' },
       { loc: `${SITE + cityPath(city)}submit.html`, pri: '0.3' },
       ...all.map((d) => ({ loc: SITE + dishPath(d), lastmod: d.date.slice(0, 10), pri: '0.7', img: d.full })),
     );
