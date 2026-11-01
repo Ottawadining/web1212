@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-CA" class="no-js" data-city="ottawa" data-home="/ottawa/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ottawa Plated — Beautiful food. Made in Ottawa.</title>
+<meta name="description" content="Ottawa Plated is an ongoing visual collection of beautiful food made in Ottawa — part of Plated, a gallery of food photography, city by city.">
+<link rel="canonical" href="https://plated.gallery/ottawa/">
+<meta name="theme-color" content="#0b0a08">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plated">
+<meta property="og:title" content="Ottawa Plated — Beautiful food. Made in Ottawa.">
+<meta property="og:description" content="A visual collection of beautiful food made in Ottawa.">
+<meta property="og:url" content="https://plated.gallery/ottawa/">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/world.css?v=20261031a">
+<script>document.documentElement.classList.remove('no-js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://plated.gallery/#site","name":"Plated","url":"https://plated.gallery/","description":"A gallery of beautiful food photography, city by city."},
+ {"@type":"CollectionPage","@id":"https://plated.gallery/ottawa/#collection","name":"Ottawa Plated","url":"https://plated.gallery/ottawa/","isPartOf":{"@id":"https://plated.gallery/#site"},"about":{"@type":"City","name":"Ottawa"}}
+]}
+</script>
+</head>
+<body>
+<a class="skip" href="#index">Skip to the collection</a>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-word"><span>P</span><span>L</span><span>A</span><span>T</span><span>E</span><span>D</span></div>
+  <p class="ld-tag">Beautiful food. Made in Ottawa.</p>
+  <div class="ld-foot">
+    <span class="mono" id="ld-pct">000</span>
+    <button class="enter" id="enter" type="button" tabindex="-1">Enter</button>
+    <span class="mono">Ottawa, ON</span>
+  </div>
+</div>
+
+<canvas class="world" id="world" aria-hidden="true"></canvas>
+
+<header class="hud hud-top">
+  <a class="mark" href="/ottawa/" aria-label="Ottawa Plated — home">OTTAWA<b>PLATED</b></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/ottawa/about.html"><i>01</i>About</a>
+    <a href="/ottawa/submit.html"><i>02</i>Submit</a>
+    <a href="/"><i>03</i>Cities</a>
+  </nav>
+</header>
+
+<div class="hud hud-bottom" aria-hidden="true">
+  <p class="count"><!--PREVIEW:START--><!--PREVIEW:END--><span id="count"><!--COUNT:START-->0 plates<!--COUNT:END--></span></p>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 60 60"><circle class="cur-track" cx="30" cy="30" r="26"/><circle class="cur-prog" cx="30" cy="30" r="26"/></svg>
+  <span class="cur-label">Drag</span>
+</div>
+
+<main id="main">
+  <h1 class="sr">Ottawa Plated — beautiful food, made in Ottawa</h1>
+  <section class="index" id="index" aria-label="The Collection">
+    <div class="ix-head">
+      <p class="mono">The Collection</p>
+      <p class="ix-lede">A visual journal of the dishes, details and delicious things that make Ottawa worth looking at.</p>
+    </div>
+    <ol class="grid" id="grid"><!--GALLERY:START--><!--GALLERY:END--></ol>
+    <footer class="ix-foot">
+      <p>© Plated</p>
+      <p><a href="/ottawa/about.html">About</a><a href="/ottawa/submit.html">Submit a dish</a><a href="/">Cities</a></p>
+    </footer>
+  </section>
+</main>
+
+<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="Photograph detail" hidden>
+  <button type="button" class="rv-close" id="rv-close">Close</button>
+  <div class="rv-body" id="rv-body"></div>
+</div>
+
+<!--DATA:START--><script type="application/json" id="seed">{"items":[],"total":0}</script><!--DATA:END-->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
+<script type="module" src="/assets/world.js?v=20261031a"></script>
+</body>
+</html>
