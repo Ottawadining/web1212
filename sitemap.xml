@@ -14,6 +14,36 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/ottawa/dish/maiz-raphael.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b1d45d99-f0c6-441b-a5b9-5c7eb27b9f78-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/scallops-tomo.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2954019b-c8d1-44b6-af26-e075a1939ed7-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/arctic-char-1-elgin.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/345b7b65-8213-423c-bf07-6a505abf5b6e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/watermelon-salad-le-st-laurent.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4ca63694-9834-4e93-bd13-60fd959d908c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/kanpachi-aiana.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/aa59ab0f-bcb3-4afb-9585-1fc27275a660-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/ottawa/dish/stuffed-morels-fauna.html</loc>
     <lastmod>2026-11-01</lastmod>
     <priority>0.7</priority>
