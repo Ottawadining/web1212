@@ -6,6 +6,7 @@ import { CONFIG, LIVE, esc, pad, fmtDate, storageUrl } from './core.js';
 const CITIES = {
   ottawa: { name: 'Ottawa', base: 'https://plated.gallery/ottawa' },
   toronto: { name: 'Toronto', base: 'https://plated.gallery/toronto' },
+  montreal: { name: 'Montréal', base: 'https://plated.gallery/montreal' },
 };
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
