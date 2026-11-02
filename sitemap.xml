@@ -712,4 +712,31 @@
     <priority>0.7</priority>
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a802398a-9f87-4cc3-90b3-01e2b33f8372-1600.webp</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://plated.gallery/montreal/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/submit.html</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/la-tonda-mortadella-bar-bello.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/595e34d6-a1ee-4006-84ba-c3b6b3e446f0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/le-homard-a-la-parisienne-au-pied-de-cochon.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8acee03d-4e82-4fb2-83ac-8effe8adafb5-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/truite-de-montebello-le-violon.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/95ae9a0f-0396-47a1-ae4d-0afed6399097-1600.webp</image:loc></image:image>
+  </url>
 </urlset>
