@@ -722,6 +722,48 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/montreal/dish/chevre-et-betterave-toque.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/65740f92-81d6-4ac9-b2bc-9a690581f983-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/lobster-and-tomalley-sushi-nishinokaze.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a9f4ac33-10cf-4e09-94ae-26a9ca286d2c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/anguille-fume-sabayon.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/92c0dc84-53f2-4340-bd0e-590f4147ffd7-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/crabe-carotte-yogourt-fume-restuarant-candide.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e5604ba7-ebcb-4690-aa13-85934c910fc8-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/guinea-fowl-wings-rossini-beba.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/84198da1-e112-4b31-a10a-13a29ebfa07a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/fletan-confit-montreal-plaza.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/7a8d3062-fcf1-45f4-b12b-5c988ab458c0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/dore-restaurant-mastard.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/c7c2ccc8-f64e-4de9-8fed-fdd188d9dc4a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/montreal/dish/risotto-au-homard-restaurant-l-express.html</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
