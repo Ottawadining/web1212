@@ -714,12 +714,60 @@
   </url>
   <url>
     <loc>https://plated.gallery/montreal/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/barbecued-lamb-neck-and-leg-restaurant-lawrence.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/3f55381d-1cd3-4641-a969-d4ac100598c2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/restaurant-limbo-truite-de-montebello.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4abd2341-5540-47a8-8d87-55a3ee87353f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/hamachi-crudo-molenne.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f892c3d5-b334-4925-965c-d6309536bbd5-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/crabe-de-rimouski-la-cave-du-paraplui.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/74ea41c9-8aca-4c9d-bd06-59570ea2400d-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/porc-et-epinards-bistro-boisselet.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f5b336ff-bb4c-4e8a-8258-284d826307a2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/peperoni-rosso-con-stracciatella-pasta-pooks.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0715902b-2b90-43c9-b0fb-a7eb699c7b8f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/cotelette-de-porc-bruce.html</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a9e02c88-8aee-42b6-8a13-02f551edb6bb-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/haricots-et-abricots-vin-mon-lapin.html</loc>
+    <lastmod>2026-11-03</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/835acda4-63ef-4d16-a234-3d5d85313ba3-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/dish/chevre-et-betterave-toque.html</loc>
