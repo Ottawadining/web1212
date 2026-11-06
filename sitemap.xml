@@ -714,12 +714,30 @@
   </url>
   <url>
     <loc>https://plated.gallery/montreal/</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/boudin-noir-restaurant-lemeac.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/c166bc44-e5e7-46db-b896-60ffa90fefc1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/cerf-monarque.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/10ae5533-0f54-4f18-b605-2a9a8fcc8f05-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/spicy-sinigang-fresh-noodles-buboy.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2a49ad1f-3ffa-41ce-8a89-dd93b8bc7567-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/dish/barbecued-lamb-neck-and-leg-restaurant-lawrence.html</loc>
