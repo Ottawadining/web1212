@@ -16,5 +16,6 @@ export default {
     ottawa: { name: 'Ottawa', region: 'ON', country: 'CA' },
     toronto: { name: 'Toronto', region: 'ON', country: 'CA' },
     montreal: { name: 'Montréal', region: 'QC', country: 'CA' },
+    'new-york': { name: 'New York', region: 'NY', country: 'US' },
   },
 };
