@@ -722,6 +722,84 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/montreal/dish/chevre-le-virunga-restaurant.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1488ec04-61f8-4c18-a5af-f2d3e6b4894a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/tomate-restaurant-panacee.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/24bd0a50-540a-4788-b85f-545509e3e826-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/crudo-de-petoncles-memo.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ba0e0f1d-6ec6-47d6-90d0-2a1943d60990-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/gnocchi-classique-restaurant-le-filet.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b64b2678-e0d6-4682-af2f-02296627c1ac-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/foie-gras-le-club-chasse-et-peche.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e93684e0-d286-4590-9c79-5578393da078-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/pieuvre-grilee-helicoptere.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a912a8d9-edb8-4f58-b8b8-15f9bfba279f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/magret-de-canard-renoir-montreal.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d92c997d-e96f-435e-82ef-2521a4caf3af-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/filet-mignon-dorsia.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/70802f30-dee4-447c-ba94-e143ca2adfbd-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/agneau-de-kamouraska-restaurant-la-chronique.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/85295a50-2212-46e5-82c5-6d0df4af57aa-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/friki-with-braised-beef-cheek-damas.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/976a845e-ece6-4f54-82f0-5a0e634b8b3a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/nordic-shrimp-garde-manger.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/691be260-cabb-4c90-832d-00974c811a32-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/foie-gras-bouillon-bilk.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9a9ee099-d199-4091-8a3d-11fa69b3bc19-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/cappellacci-cabaret-l-enfer.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f675e70e-5502-43d5-aee4-e85a7a5358c1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/montreal/dish/loup-de-mer-marcus.html</loc>
     <lastmod>2026-11-10</lastmod>
     <priority>0.7</priority>
@@ -981,5 +1059,35 @@
   <url>
     <loc>https://plated.gallery/new-york/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/duck-breast-bar-bete.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/dc2af318-a9f4-445c-bc0b-57d904c54c0c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/bbq-squid-salad-hanoi-house.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fae32ad6-88f9-4300-8e93-e11765f77be5-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/campanella-rucola-restaurant.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0d94b083-25f6-4032-997e-804d27a6feca-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/fried-cauliflower-the-fly.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2cfbe4cc-0a28-44e1-a823-2af7193658ec-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/caldo-de-pato-yellow-rose.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/18e46703-76aa-4601-9b72-ccaafe8dcfb5-1600.webp</image:loc></image:image>
   </url>
 </urlset>
