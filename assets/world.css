@@ -169,3 +169,9 @@ body::after { /* soft vignette over the field */
 .hud-bottom { display: none; }
 
 .grid .empty { grid-column: 1 / -1; padding: 48px 0; color: var(--mute); font-size: 15px; }
+
+/* ---------- the city ring ---------- */
+.ring-labels { position: fixed; inset: 0; z-index: 6; pointer-events: none; opacity: 0; }
+.ring-labels span { position: absolute; left: 0; top: 0; font: 11px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); white-space: nowrap; will-change: transform, opacity; }
+.nav { transition: opacity .6s var(--out); }
+.is-ring .nav a:not([href="/"]) { opacity: 0; pointer-events: none; }

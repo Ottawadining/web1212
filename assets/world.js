@@ -1,8 +1,9 @@
 // Plated — the world (one globe of plates per city; shared by every city page).
-// A globe of plates (three.js): drag to spin it, scroll or pinch to fly in, tap a plate to turn it
-// towards you, hold it to reveal the dish and restaurant. A hidden list keeps the collection crawlable.
+// A globe of plates (three.js): drag to spin it, scroll or pinch to fly in, tap a plate to open it.
+// "Cities" pulls back to a ring of small city globes: swipe to spin the ring, tap a globe to fly into
+// that city (the page swaps city in place). A hidden list keeps the collection crawlable.
 import * as THREE from 'three';
-import { fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML } from './core.js';
+import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js';
 
 const root = document.documentElement;
 const $ = (id) => document.getElementById(id);
@@ -19,8 +20,9 @@ const rv = $('reveal');
 const rvBody = $('rv-body');
 const rvClose = $('rv-close');
 
-const HOME_TITLE = document.title;
-const HOME_PATH = root.dataset.home || '/'; // the city's front page, e.g. /toronto/
+let HOME_TITLE = document.title;
+let HOME_PATH = root.dataset.home || '/'; // the city's front page, e.g. /toronto/
+let city = root.dataset.city || null;
 const HOLD_MS = Infinity; // a single tap opens a plate; pressing only lifts it
 const RING = 2 * Math.PI * 26;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -129,8 +131,17 @@ function createWorld() {
   let W = 0, H = 0, fit = 3000, plates = [], meshes = [];
   const rot = { x: .22, y: 0 }, rotT = { x: .22, y: 0 };
   let dist = 3000, distT = 3000, zoomRatio = 1, homeRatio = 1, zoomed = false;
-  let speed = 0, introAt = -1, idleAt = 0, last = performance.now(), raf = 0, paused = false;
+  let speed = 0, introAt = -1, bloomAt = -1, idleAt = 0, last = performance.now(), raf = 0, paused = false;
   let hovered = null;
+
+  // ---- the city ring: every open city as a small globe on a carousel ----
+  const SM = .3;                       // a city globe's size in the ring, relative to the full globe
+  const ring = { keys: [], cur: 0, pos: 0, posT: 0, Rr: RAD * 1.25, cam: new THREE.Vector3(), tgt: new THREE.Vector3(), waits: [] };
+  const anim = { from: 0, to: 0, t0: 0, dur: 1, done: null };   // 0 = inside a city, 1 = the ring
+  let mm = 0;                          // eased ring amount, this frame
+  const minis = new Map();             // city -> { group, plates, alpha, alphaT, meshes }
+  const cityCam = new THREE.Vector3(), camTgt = new THREE.Vector3(), slotV = new THREE.Vector3();
+  let labels = null;
 
   function texFor(d) {
     let e = textures.get(d.id);
@@ -238,6 +249,79 @@ function createWorld() {
     meshes = plates.map((p) => p.m);
   }
 
+  /* ----- the ring ----- */
+  function slotPos(i, out) {
+    const n = Math.max(ring.keys.length, 1), th = (i - ring.pos) * Math.PI * 2 / n;
+    return out.set(Math.sin(th) * ring.Rr, 0, (Math.cos(th) - 1) * ring.Rr);
+  }
+
+  function ringPose() {
+    // the camera sits above and in front of the ring, looking down at it a little,
+    // so the globes behind show above the one at the front
+    const n = Math.max(ring.keys.length, 1), r = RAD * SM, el = .45;
+    ring.Rr = RAD * Math.max(1.25, n * .42);
+    ring.tgt.set(0, r * .2, -ring.Rr * .55);
+    let spread = 0; // how far sideways the globes reach (none with two cities: one in front, one behind)
+    for (let i = 0; i < n; i++) spread = Math.max(spread, Math.abs(Math.sin(i * Math.PI * 2 / n)));
+    const halfW = ring.Rr * spread + r * 1.3;
+    const dW = halfW / (tanHalf * camera.aspect);
+    const dH = (r * 2.6 + ring.Rr * Math.sin(el) * 1.1) / tanHalf * .8;
+    const D = Math.max(dW, dH, RAD * 2);
+    ring.cam.set(0, Math.sin(el) * D, Math.cos(el) * D).add(ring.tgt);
+  }
+
+  // a city's small globe: 40 photos, laid flat on the sphere, slowly turning
+  function setMini(key, list) {
+    const old = minis.get(key);
+    if (old) { scene.remove(old.group); old.plates.forEach((p) => p.m.material.dispose()); }
+    if (!list.length) { minis.delete(key); return; }
+    const group = new THREE.Group();
+    const N = 40, dishes = spreadDishes(N, list.length), size = RAD * .37;
+    const plates = [];
+    for (let i = 0; i < N; i++) {
+      const y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
+      const pos = new THREE.Vector3(Math.cos(th) * r * RAD, y * RAD, Math.sin(th) * r * RAD);
+      const mat = new THREE.ShaderMaterial({
+        uniforms: {
+          uMap: { value: blank }, uCrop: { value: new THREE.Vector4(0, 0, 1, 1) },
+          uHas: { value: 0 }, uBright: { value: 0 }, uFog: { value: 0 }, uSpeed: { value: 0 }, uBack: { value: .4 },
+        },
+        vertexShader: VS, fragmentShader: FS, side: THREE.DoubleSide,
+      });
+      const m = new THREE.Mesh(geo, mat);
+      mtx.lookAt(pos, ORIGIN, Math.abs(y) > .995 ? UP_POLE : UP);
+      m.quaternion.setFromRotationMatrix(mtx);
+      m.position.copy(pos);
+      m.scale.setScalar(size * (.85 + hash(i, 3, 2) * .3));
+      m.userData.city = key;
+      group.add(m);
+      plates.push({ m, tex: texFor(list[dishes[i]]), has: 0 });
+    }
+    group.rotation.set(.22, hash(key.length, key.charCodeAt(0), 1) * 6.28, 0);
+    group.visible = false;
+    scene.add(group);
+    minis.set(key, { group, plates, alpha: key === ring.keys[ring.cur] ? 0 : 1, alphaT: 1, meshes: plates.map((p) => p.m) });
+  }
+
+  function ensureLabels() {
+    if (labels) return;
+    labels = document.createElement('div');
+    labels.className = 'ring-labels';
+    labels.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(labels);
+  }
+  function setLabels() {
+    ensureLabels();
+    labels.innerHTML = ring.keys.map((k) => `<span>${esc(cityName(k))}</span>`).join('');
+  }
+
+  function animateRing(to, dur) {
+    return new Promise((res) => {
+      if (anim.done) anim.done();
+      Object.assign(anim, { from: mm, to, t0: performance.now(), dur, done: res });
+    });
+  }
+
   function layout() {
     W = innerWidth; H = innerHeight;
     renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
@@ -260,6 +344,7 @@ function createWorld() {
     zoomRatio = Math.min(zoomRatio, homeRatio);
     distT = fit * zoomRatio;
     if (introAt < 0) dist = distT;
+    ringPose();
   }
 
   function frame(now) {
@@ -276,14 +361,35 @@ function createWorld() {
 
     const t = introAt < 0 ? -1 : (now - introAt) / 1000;
     const e = t < 0 ? 0 : easeOut(t / 2.2);
+
+    // ring: pull back (0 -> 1) or fly in (1 -> 0), and the carousel's turn
+    if (anim.done || anim.from !== anim.to) {
+      const a = clamp((now - anim.t0) / (anim.dur * 1000), 0, 1);
+      const q = a < .5 ? 4 * a * a * a : 1 - Math.pow(-2 * a + 2, 3) / 2; // ease in-out
+      mm = anim.from + (anim.to - anim.from) * q;
+      if (a >= 1) { mm = anim.to; anim.from = anim.to; const d = anim.done; anim.done = null; if (d) d(); }
+    }
+    ring.pos += (ring.posT - ring.pos) * (1 - Math.exp(-dt * 4.5));
+    if (Math.abs(ring.posT - ring.pos) < .002) {
+      ring.pos = ring.posT;
+      if (ring.waits.length) { const w = ring.waits; ring.waits = []; w.forEach((f) => f()); }
+    }
+
     globe.rotation.set(rot.x, rot.y - (1 - e) * 1.6, 0);
-    globe.scale.setScalar(.55 + .45 * e);
-    camera.position.set(0, 0, dist * (1 + (1 - e) * .9));
-    camera.lookAt(0, 0, 0);
+    const gs = .55 + .45 * e;
+    globe.scale.setScalar(gs * Math.pow(SM / gs, mm));
+    if (mm > 0) slotPos(ring.cur, slotV).multiplyScalar(mm); else slotV.set(0, 0, 0);
+    globe.position.copy(slotV);
+    cityCam.set(0, 0, dist * (1 + (1 - e) * .9));
+    camera.position.lerpVectors(cityCam, ring.cam, mm);
+    camTgt.lerpVectors(ORIGIN, ring.tgt, mm);
+    camera.lookAt(camTgt);
     camera.updateMatrixWorld();
     globe.updateMatrixWorld();
+    vp.copy(globe.position).applyMatrix4(camera.matrixWorldInverse);
+    const cz = -vp.z; // depth of the globe's centre
     // from outside, the backs of far-side plates sit dim behind the front ones; from inside, all are lit
-    const camR = camera.position.z / globe.scale.x;
+    const camR = camera.position.distanceTo(globe.position) / globe.scale.x;
     const back = .42 + .58 * (1 - smooth(RAD * .85, RAD * 1.35, camR));
     const inside = (back - .42) / .58; // 0 outside the globe, 1 inside
 
@@ -296,7 +402,8 @@ function createWorld() {
       const u = p.m.material.uniforms;
       if (p.tex.t && u.uMap.value !== p.tex.t) { u.uMap.value = p.tex.t; u.uCrop.value.copy(p.tex.crop); }
       p.has += ((p.tex.t ? 1 : 0) - p.has) * .08;
-      const pe = t < 0 ? 0 : easeOut((t - .2 - p.delay * .9) / 1.1);
+      const tb = bloomAt > 0 ? (now - bloomAt) / 1000 : t;
+      const pe = tb < 0 ? 0 : easeOut((tb - .2 - p.delay * .9) / 1.1);
       p.lift += ((p === hold ? .1 + holdP * .18 : p === hovered ? .08 : 0) - p.lift) * .15;
       // breathe gently in and out along the sphere; a hovered or pressed plate rises off the surface
       p.m.position.copy(p.base).multiplyScalar(1 + Math.sin(now / 1400 + p.bob) * .012 + p.lift * .12);
@@ -332,7 +439,7 @@ function createWorld() {
       u.uBright.value = p.bright * pe * (shade + (1 - shade) * inside);
       p.sh.material.uniforms.uOpacity.value = .62 * pe * (1 - inside) * smooth(0, .35, facing);
       u.uHas.value = p.has;
-      u.uFog.value = smooth(-RAD * .25, RAD * 1.05, zv - dist) * fogAmt;
+      u.uFog.value = smooth(-RAD * .25, RAD * 1.05, (zv - cz) / globe.scale.x) * fogAmt;
       u.uSpeed.value = speed;
       u.uBack.value = back;
       if (zv > 1) {
@@ -340,6 +447,47 @@ function createWorld() {
         const px = sc * globe.scale.x * (H / 2) / (zv * tanHalf);
         p.rect = { x: (vp.x + 1) / 2 * W - px / 2, y: (1 - vp.y) / 2 * H - px / 2, w: px };
       } else p.rect = null;
+    }
+
+    // the other cities' globes, around the ring
+    if (minis.size) {
+      const ka = 1 - Math.exp(-dt * 3);
+      for (const [key, mini] of minis) {
+        const i = ring.keys.indexOf(key);
+        mini.alphaT = i < 0 || i === ring.cur ? 0 : 1;
+        mini.alpha += (mini.alphaT - mini.alpha) * ka;
+        const vis = mini.alpha * mm;
+        mini.group.visible = vis > .004;
+        if (!mini.group.visible) continue;
+        slotPos(i, mini.group.position);
+        mini.group.scale.setScalar(SM * (.7 + .3 * mm));
+        mini.group.rotation.y += dt * .12;
+        const back = smooth(0, ring.Rr * 2, -mini.group.position.z); // further round the ring = dimmer
+        for (const p of mini.plates) {
+          const u = p.m.material.uniforms;
+          if (p.tex.t && u.uMap.value !== p.tex.t) { u.uMap.value = p.tex.t; u.uCrop.value.copy(p.tex.crop); }
+          p.has += ((p.tex.t ? 1 : 0) - p.has) * .08;
+          u.uHas.value = p.has;
+          u.uBright.value = .92 * vis * (1 - back * .35);
+          u.uFog.value = back * .45;
+        }
+      }
+    }
+    // city names under each globe
+    if (labels) {
+      labels.style.opacity = String(smooth(.75, 1, mm));
+      if (mm > .004) {
+        const r = RAD * SM;
+        [...labels.children].forEach((el, i) => {
+          slotPos(i, v); v.y -= r * 1.32;
+          const depth = -v.clone().applyMatrix4(camera.matrixWorldInverse).z;
+          v.project(camera);
+          const front = smooth(-1, 1, Math.cos((i - ring.pos) * Math.PI * 2 / Math.max(ring.keys.length, 1)));
+          el.style.transform = `translate3d(${((v.x + 1) / 2 * W).toFixed(1)}px, ${((1 - v.y) / 2 * H).toFixed(1)}px, 0) translateX(-50%)`;
+          el.style.opacity = String(.35 + .65 * front);
+          el.style.zIndex = String(Math.round(10000 - depth));
+        });
+      }
     }
 
     renderer.render(scene, camera);
@@ -377,6 +525,45 @@ function createWorld() {
     },
     intro() { introAt = performance.now(); poke(); },
     refresh() { build(); layout(); },
+
+    /* ring API */
+    isRing: () => mm > .001 || anim.to === 1,
+    setMini,
+    // pull back to the ring; keys = the cities on it, cur = this page's city
+    openRing(keys, cur) {
+      ring.keys = keys; ring.cur = cur; ring.pos = ring.posT = cur;
+      for (const [k, mini] of minis) mini.alpha = k === keys[cur] ? 0 : 1;
+      layout(); setLabels(); poke();
+      return animateRing(1, 1.5);
+    },
+    ringDrag(dx) { ring.posT -= dx / Math.max(Math.min(W, H) * .6, 240); },
+    ringRelease(vx) { ring.posT = Math.round(ring.posT - vx * .35); },
+    ringStep(d) { ring.posT = Math.round(ring.posT) + d; },
+    // the city whose globe is under the pointer (or -1)
+    ringPick(x, y) {
+      ndc.set(x / W * 2 - 1, -(y / H) * 2 + 1);
+      raycaster.setFromCamera(ndc, camera);
+      const targets = [...meshes];
+      for (const mini of minis.values()) if (mini.group.visible) targets.push(...mini.meshes);
+      const hit = raycaster.intersectObjects(targets, false)[0];
+      if (!hit) return -1;
+      return hit.object.userData.city ? ring.keys.indexOf(hit.object.userData.city) : ring.cur;
+    },
+    frontIndex() { const n = ring.keys.length; return ((Math.round(ring.pos) % n) + n) % n; },
+    // turn the ring until city i is at the front
+    focusCity(i) {
+      const n = ring.keys.length;
+      ring.posT = i + n * Math.round((ring.pos - i) / n);
+      return new Promise((res) => ring.waits.push(res));
+    },
+    // this page's globe becomes city i (items already swapped): its photos bloom in as we fly
+    swapMain(i) {
+      ring.cur = i; hovered = null;
+      build(); bloomAt = performance.now();
+      zoomed = false; layout(); dist = distT;
+      poke();
+    },
+    closeRing() { poke(); return animateRing(0, 1.35); },
     resize() { layout(); },
     pause() { paused = true; if (raf) { cancelAnimationFrame(raf); raf = 0; } },
     resume() { if (!paused && raf) return; paused = false; last = performance.now(); if (!raf) raf = requestAnimationFrame(frame); },
@@ -420,6 +607,7 @@ function bindInput() {
     Object.assign(input, { down: true, id: e.pointerId, lx: e.clientX, ly: e.clientY, lt: performance.now(), vx: 0, vy: 0, moved: 0 });
     input.cx = input.rx = e.clientX; input.cy = input.ry = e.clientY;
     root.classList.add('is-dragging');
+    if (world.isRing()) return;
     const p = world.pick(e.clientX, e.clientY);
     if (p) { input.holdPlate = p; input.holdAt = performance.now(); cursor.classList.add('is-on', 'is-plate'); curLabel.textContent = 'View'; }
   });
@@ -427,12 +615,19 @@ function bindInput() {
     input.cx = e.clientX; input.cy = e.clientY;
     if (pts.has(e.pointerId)) pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pts.size === 2) {
+      if (world.isRing()) return;
       const s = spread();
       if (pinch > 0 && s > 0) world.zoom(pinch / s);
       pinch = s;
       return;
     }
     if (!input.down || e.pointerId !== input.id) {
+      if (fine && !input.down && world.isRing()) {
+        const c = world.ringPick(e.clientX, e.clientY);
+        cursor.classList.add('is-on');
+        cursor.classList.toggle('is-plate', c >= 0);
+        return;
+      }
       if (fine && !input.down) {
         const p = world.pick(e.clientX, e.clientY);
         world.setHover(p);
@@ -446,6 +641,7 @@ function bindInput() {
     input.vx = input.vx * .6 + (dx / dt) * .4; input.vy = input.vy * .6 + (dy / dt) * .4;
     input.lx = e.clientX; input.ly = e.clientY; input.lt = now;
     input.moved += Math.abs(dx) + Math.abs(dy);
+    if (world.isRing()) { world.ringDrag(dx); return; }
     world.drag(dx, dy);
     if (input.holdPlate && input.moved > 8) { input.cancelHold(); world.setHover(null); curLabel.textContent = 'Drag'; cursor.classList.remove('is-plate'); }
   });
@@ -455,6 +651,11 @@ function bindInput() {
     if (!input.down || e.pointerId !== input.id) return;
     input.down = false;
     root.classList.remove('is-dragging');
+    if (world.isRing()) {
+      if (input.moved > 8) world.ringRelease(input.vx);
+      else { const c = world.ringPick(e.clientX, e.clientY); if (c >= 0) chooseCity(c); }
+      return;
+    }
     if (input.moved > 8 && input.moved < 99) world.drag(input.vx * 140, input.vy * 140); // flick
     else if (input.holdPlate && input.holdPlate.rect) { const pl = input.holdPlate; input.cancelHold(); openPlate(pl.dish, { from: pl.rect }); } // tap: open it
     input.cancelHold();
@@ -465,11 +666,19 @@ function bindInput() {
   canvas.addEventListener('pointerleave', () => { if (!input.down) { world.setHover(null); cursor.classList.remove('is-on'); } });
   canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
+    if (world.isRing()) return;
     const d = (e.deltaMode === 1 ? 32 : 1) * (e.ctrlKey ? e.deltaY * 3 : e.deltaY);
     world.zoom(Math.exp(clamp(d, -120, 120) * .0015));
   }, { passive: false });
   document.addEventListener('keydown', (e) => {
     if (!root.classList.contains('is-entered') || !rv.hidden) return;
+    if (world.isRing()) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); world.ringStep(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); world.ringStep(1); }
+      else if (e.key === 'Enter') { e.preventDefault(); chooseCity(world.frontIndex()); }
+      else if (e.key === 'Escape') { e.preventDefault(); chooseCity(ringKeys.indexOf(city)); }
+      return;
+    }
     const map = { ArrowLeft: [-120, 0], ArrowRight: [120, 0], ArrowUp: [0, -90], ArrowDown: [0, 90] };
     if (map[e.key]) { e.preventDefault(); world.drag(...map[e.key]); }
     else if (e.key === '+' || e.key === '=') world.zoom(.85);
@@ -584,6 +793,8 @@ rv.addEventListener('touchend', () => {
   g.style.transform = ''; g.style.opacity = ''; rv.style.background = '';
 });
 addEventListener('popstate', (e) => {
+  const pc = location.pathname.split('/')[1];
+  if (world && pc && pc !== city && CONFIG.CITIES[pc]) { switchInstant(pc, e.state?.plate); return; }
   const slug = e.state?.plate;
   const i = slug ? items.findIndex((d) => d.slug === slug) : -1;
   if (i >= 0) { openPlate(i, { push: false }); return; }
@@ -601,6 +812,89 @@ document.addEventListener('keydown', (e) => {
     else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
   }
 });
+/* ---------- moving between cities ---------- */
+// The ring shows every open city (live: true in config.js) plus the one you're in.
+let ringKeys = [];
+const cityItems = new Map();
+let switching = false;
+
+function ringCities() {
+  return Object.keys(CONFIG.CITIES).filter((k) => CONFIG.CITIES[k].live || k === city);
+}
+async function itemsFor(k) {
+  if (k === city && items.length) return items;
+  if (!cityItems.has(k)) cityItems.set(k, fetchAll(k).catch(() => []));
+  return cityItems.get(k);
+}
+
+// rewrite the page's city: title, header, links, hidden list, address
+function applyCity(k, list, push) {
+  const name = cityName(k);
+  city = k; items = list;
+  root.dataset.city = k; root.dataset.home = `/${k}/`;
+  HOME_PATH = `/${k}/`;
+  HOME_TITLE = document.title = `${name} Plated — Beautiful food. Made in ${name}.`;
+  const mark = document.querySelector('.hud-top .mark');
+  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', `${name} Plated — home`); mark.innerHTML = `${esc(name.toUpperCase())}<b>PLATED</b>`; }
+  document.querySelectorAll('a[href$="/submit.html"]').forEach((a) => { a.href = `/${k}/submit.html`; });
+  const canon = document.querySelector('link[rel="canonical"]'); if (canon) canon.href = `${CONFIG.SITE_URL}/${k}/`;
+  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = `${name} Plated — beautiful food, made in ${name}`;
+  const lede = document.querySelector('.ix-lede'); if (lede) lede.textContent = `A visual journal of the dishes, details and delicious things that make ${name} worth looking at.`;
+  renderIndex();
+  if (push) history.pushState({ city: k }, '', HOME_PATH);
+}
+
+async function openCities() {
+  if (!world || switching) return;
+  if (!rv.hidden) { rvState.pushed = false; history.replaceState(null, '', HOME_PATH); hidePlate(); }
+  ringKeys = ringCities();
+  if (ringKeys.length < 2) { location.href = '/'; return; }
+  root.classList.add('is-ring');
+  world.resume();
+  // the other cities' globes fill in as their photos arrive
+  ringKeys.forEach((k) => { if (k !== city) itemsFor(k).then((list) => { if (root.classList.contains('is-ring')) world.setMini(k, list); }); });
+  await world.openRing(ringKeys, ringKeys.indexOf(city));
+}
+
+async function chooseCity(i) {
+  if (switching || i < 0) return;
+  switching = true;
+  const k = ringKeys[i];
+  try {
+    await world.focusCity(i);
+    if (k !== city) {
+      const list = await itemsFor(k);
+      if (list.length) {
+        cityItems.set(city, Promise.resolve(items));
+        applyCity(k, list, true);
+        world.swapMain(i);
+      }
+    }
+    root.classList.remove('is-ring');
+    await world.closeRing();
+  } finally { switching = false; }
+}
+
+// back / forward between cities: swap without the ring
+async function switchInstant(k, plate) {
+  const list = await itemsFor(k);
+  if (!list.length) { location.reload(); return; }
+  if (!rv.hidden) hidePlate();
+  cityItems.set(city, Promise.resolve(items));
+  ringKeys = ringCities(); if (!ringKeys.includes(k)) ringKeys.push(k);
+  applyCity(k, list, false);
+  world.swapMain(ringKeys.indexOf(k));
+  if (plate) { const j = items.findIndex((d) => d.slug === plate); if (j >= 0) openPlate(j, { push: false }); }
+}
+
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('.hud-top .nav a[href="/"]');
+  if (!a || !world || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+  e.preventDefault();
+  if (root.classList.contains('is-ring')) chooseCity(world.frontIndex());
+  else openCities();
+});
+
 /* ---------- boot ---------- */
 let world = null;
 
