@@ -23,6 +23,9 @@ const rvClose = $('rv-close');
 let HOME_TITLE = document.title;
 let HOME_PATH = root.dataset.home || '/'; // the city's front page, e.g. /toronto/
 let city = root.dataset.city || null;
+// plated.gallery itself: no city yet. The ring opens on Enter with this city at the front.
+const FRONT = !city && root.dataset.front ? root.dataset.front : null;
+let mainCity = city || FRONT; // whose photos the main globe is showing
 const HOLD_MS = Infinity; // a single tap opens a plate; pressing only lifts it
 const RING = 2 * Math.PI * 26;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -541,11 +544,11 @@ function createWorld() {
     isRing: () => mm > .001 || anim.to === 1,
     setMini,
     // pull back to the ring; keys = the cities on it, cur = this page's city
-    openRing(keys, cur) {
+    openRing(keys, cur, dur = 1.5) {
       ring.keys = keys; ring.cur = cur; ring.pos = ring.posT = cur;
       for (const [k, mini] of minis) mini.alpha = k === keys[cur] ? 0 : 1;
       layout(); setLabels(); poke();
-      return animateRing(1, 1.5);
+      return animateRing(1, dur);
     },
     ringDrag(dx) { ring.posT -= dx / Math.max(Math.min(W, H) * .6, 240); },
     ringRelease(vx) { ring.posT = Math.round(ring.posT - vx * .35); },
@@ -804,6 +807,7 @@ rv.addEventListener('touchend', () => {
   g.style.transform = ''; g.style.opacity = ''; rv.style.background = '';
 });
 addEventListener('popstate', (e) => {
+  if (FRONT && location.pathname === '/') { location.reload(); return; } // back to the front door
   const pc = location.pathname.split('/')[1];
   if (world && pc && pc !== city && CONFIG.CITIES[pc]) { switchInstant(pc, e.state?.plate); return; }
   const slug = e.state?.plate;
@@ -830,10 +834,10 @@ const cityItems = new Map();
 let switching = false;
 
 function ringCities() {
-  return Object.keys(CONFIG.CITIES).filter((k) => CONFIG.CITIES[k].live || k === city);
+  return Object.keys(CONFIG.CITIES).filter((k) => CONFIG.CITIES[k].live || k === city || k === mainCity);
 }
 async function itemsFor(k) {
-  if (k === city && items.length) return items;
+  if (k === mainCity && items.length) return items;
   if (!cityItems.has(k)) cityItems.set(k, fetchAll(k).catch(() => []));
   return cityItems.get(k);
 }
@@ -842,6 +846,7 @@ async function itemsFor(k) {
 function applyCity(k, list, push) {
   const name = cityName(k);
   city = k; items = list;
+  root.classList.remove('is-front');
   root.dataset.city = k; root.dataset.home = `/${k}/`;
   HOME_PATH = `/${k}/`;
   HOME_TITLE = document.title = `${name} Plated — Beautiful food. Made in ${name}.`;
@@ -855,7 +860,7 @@ function applyCity(k, list, push) {
   if (push) history.pushState({ city: k }, '', HOME_PATH);
 }
 
-async function openCities() {
+async function openCities(dur) {
   if (!world || switching) return;
   if (!rv.hidden) { rvState.pushed = false; history.replaceState(null, '', HOME_PATH); hidePlate(); }
   ringKeys = ringCities();
@@ -863,8 +868,8 @@ async function openCities() {
   root.classList.add('is-ring');
   world.resume();
   // the other cities' globes fill in as their photos arrive
-  ringKeys.forEach((k) => { if (k !== city) itemsFor(k).then((list) => { if (root.classList.contains('is-ring')) world.setMini(k, list); }); });
-  await world.openRing(ringKeys, ringKeys.indexOf(city));
+  ringKeys.forEach((k) => { if (k !== mainCity) itemsFor(k).then((list) => { if (root.classList.contains('is-ring')) world.setMini(k, list); }); });
+  await world.openRing(ringKeys, ringKeys.indexOf(mainCity), dur);
 }
 
 async function chooseCity(i) {
@@ -876,9 +881,9 @@ async function chooseCity(i) {
     if (k !== city) {
       const list = await itemsFor(k);
       if (list.length) {
-        cityItems.set(city, Promise.resolve(items));
+        if (k !== mainCity) cityItems.set(mainCity, Promise.resolve(items));
         applyCity(k, list, true);
-        world.swapMain(i);
+        if (k !== mainCity) { mainCity = k; world.swapMain(i); }
       }
     }
     root.classList.remove('is-ring');
@@ -891,9 +896,10 @@ async function switchInstant(k, plate) {
   const list = await itemsFor(k);
   if (!list.length) { location.reload(); return; }
   if (!rv.hidden) hidePlate();
-  cityItems.set(city, Promise.resolve(items));
+  cityItems.set(mainCity, Promise.resolve(items));
   ringKeys = ringCities(); if (!ringKeys.includes(k)) ringKeys.push(k);
   applyCity(k, list, false);
+  mainCity = k;
   world.swapMain(ringKeys.indexOf(k));
   if (plate) { const j = items.findIndex((d) => d.slug === plate); if (j >= 0) openPlate(j, { push: false }); }
 }
@@ -911,11 +917,12 @@ let world = null;
 
 function enter() {
   if (root.classList.contains('is-entered')) return;
-  session.set('plated-entered', '1');
+  if (!FRONT) session.set('plated-entered', '1');
   loaderEl.classList.add('is-out');
   root.classList.add('is-entered');
   world.intro();
   if (fine) cursor.classList.add('is-on');
+  if (FRONT) openCities(.01); // the front door opens straight onto the ring of cities
   setTimeout(() => loaderEl.remove(), 1700);
 }
 
@@ -926,6 +933,14 @@ function goStatic() {
 }
 
 async function boot() {
+  if (FRONT) {
+    // plated.gallery: the front city's photos make the first globe on the ring
+    try { items = await fetchAll(FRONT); } catch (e) { console.error(e); }
+    if (reduced || !items.length) { goStatic(); return; }
+    try { world = createWorld(); } catch (e) { console.warn('WebGL unavailable', e); goStatic(); return; }
+    bindInput(); world.start(); startLoader();
+    return;
+  }
   const want = new URLSearchParams(location.search).get('plate');
   // A brand-new city page has no plates built into it yet, and a shared link may point past the
   // plates that are: ask the database first in those cases.
@@ -942,24 +957,7 @@ async function boot() {
     world.start();
     const skip = !!want || session.get('plated-entered') === '1';
     if (skip) { root.classList.add('is-skip'); enter(); }
-    else {
-      // preloader: count up while the first plates' photographs arrive
-      const first = items.slice(0, 12).map((d) => world.texFor(d));
-      let shown = 0, ready = false;
-      const progress = () => first.filter((e) => e.done).length / first.length;
-      const done = () => { if (ready) return; ready = true; loaderEl.classList.add('is-ready'); enterBtn.tabIndex = 0; enterBtn.focus({ preventScroll: true }); };
-      const tickPct = () => {
-        shown += (progress() * 100 - shown) * .12 + .3;
-        shown = Math.min(shown, progress() * 100);
-        pctEl.textContent = pad(Math.round(shown));
-        if (shown >= 99.5) { pctEl.textContent = '100'; setTimeout(done, 250); }
-        else if (!ready) requestAnimationFrame(tickPct);
-      };
-      requestAnimationFrame(tickPct);
-      setTimeout(done, 6000);
-      enterBtn.addEventListener('click', enter);
-      loaderEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' && ready) enter(); });
-    }
+    else startLoader();
   }
 
   if (want) { const i = items.findIndex((d) => d.slug === want); if (i >= 0) openPlate(i, { push: false }); }
@@ -973,6 +971,25 @@ async function boot() {
     renderIndex();
     world?.refresh();
   }).catch((e) => console.error(e));
+}
+
+function startLoader() {
+  // preloader: count up while the first plates' photographs arrive
+  const first = items.slice(0, 12).map((d) => world.texFor(d));
+  let shown = 0, ready = false;
+  const progress = () => first.filter((e) => e.done).length / first.length;
+  const done = () => { if (ready) return; ready = true; loaderEl.classList.add('is-ready'); enterBtn.tabIndex = 0; enterBtn.focus({ preventScroll: true }); };
+  const tickPct = () => {
+    shown += (progress() * 100 - shown) * .12 + .3;
+    shown = Math.min(shown, progress() * 100);
+    pctEl.textContent = pad(Math.round(shown));
+    if (shown >= 99.5) { pctEl.textContent = '100'; setTimeout(done, 250); }
+    else if (!ready) requestAnimationFrame(tickPct);
+  };
+  requestAnimationFrame(tickPct);
+  setTimeout(done, 6000);
+  enterBtn.addEventListener('click', enter);
+  loaderEl.addEventListener('keydown', (e) => { if (e.key === 'Enter' && ready) enter(); });
 }
 
 boot();
