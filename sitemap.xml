@@ -1061,6 +1061,36 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/new-york/dish/jeeb-pu-sukh.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/81865873-0291-444e-996b-69838fef9565-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/kampachi-crudo-miss-ada.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8f132c47-7b18-482e-af68-0bee4c446746-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/fushka-luthun.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/eb72c68d-4049-4d1c-83be-367298b6bbbb-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/beef-cheek-ravioli-babbo-ristorante-e-enoteca.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d9fac1b4-f9ec-45a5-904a-fe0e8cf5b114-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/yellowfin-tuna-claud.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b2b49232-84b5-49bd-9ac5-adcb188f10e2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/new-york/dish/duck-breast-bar-bete.html</loc>
     <lastmod>2026-11-10</lastmod>
     <priority>0.7</priority>
