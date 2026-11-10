@@ -714,12 +714,42 @@
   </url>
   <url>
     <loc>https://plated.gallery/montreal/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/loup-de-mer-marcus.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d89f1aef-6d08-4db2-bfa7-3521c03b8897-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/tartare-de-thon-restaurant-le-serpent.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b53aa3ef-5762-4860-adc5-ffdb5a22e2bb-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/ceviche-de-petoncles-restaurant-cadet.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d0fe7714-0708-4bb9-a091-a9aa6234b401-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/cavatelli-annette-bar-a-vin.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/3c310d18-c8f5-4a3b-b440-09caf1ecfb7d-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/montreal/dish/aubergine-grilee-hoogan-et-beaufort.html</loc>
+    <lastmod>2026-11-10</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0d4d13ce-a4a2-47bb-9b4c-2792a2484d49-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/montreal/dish/longe-de-porc-romesco-au-pied-de-cochon.html</loc>
