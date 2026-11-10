@@ -207,8 +207,8 @@ function createWorld() {
     plates = [];
     const n = items.length;
     if (!n) { meshes = []; return; }
-    const N = n >= 160 ? Math.min(n, 240) : clamp(n * 4, 48, 160); // ~160 plates fill the shell
-    const size = RAD * .37 * Math.sqrt(40 / N) * (innerWidth < innerHeight * .8 ? 1.08 : 1); // about half the surface covered
+    const N = plateCount(n);   // ~160 plates fill the shell
+    const size = plateSize(N); // about half the surface covered
     const dishes = spreadDishes(N, n);
     for (let i = 0; i < N; i++) {
       const y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
@@ -270,17 +270,22 @@ function createWorld() {
     ring.cam.set(0, Math.sin(el) * D, Math.cos(el) * D).add(ring.tgt);
   }
 
-  // a city's small globe: 40 photos, laid flat on the sphere, slowly turning
+  // the same globe recipe as the main one, so every city looks alike in the ring
+  const plateCount = (n) => (n >= 160 ? Math.min(n, 240) : clamp(n * 4, 48, 160));
+  const plateSize = (N) => RAD * .37 * Math.sqrt(40 / N) * (innerWidth < innerHeight * .8 ? 1.08 : 1);
+
+  // another city's globe in the ring: laid flat on the sphere, slowly turning
   function setMini(key, list) {
     const old = minis.get(key);
     if (old) { scene.remove(old.group); old.plates.forEach((p) => p.m.material.dispose()); }
     if (!list.length) { minis.delete(key); return; }
     const group = new THREE.Group();
-    const N = 40, dishes = spreadDishes(N, list.length), size = RAD * .37;
+    const N = plateCount(list.length), dishes = spreadDishes(N, list.length), size = plateSize(N);
     const plates = [];
     for (let i = 0; i < N; i++) {
       const y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
-      const pos = new THREE.Vector3(Math.cos(th) * r * RAD, y * RAD, Math.sin(th) * r * RAD);
+      const rad = RAD * (.97 + hash(i, 7, 1) * .06);
+      const pos = new THREE.Vector3(Math.cos(th) * r * rad, y * rad, Math.sin(th) * r * rad);
       const mat = new THREE.ShaderMaterial({
         uniforms: {
           uMap: { value: blank }, uCrop: { value: new THREE.Vector4(0, 0, 1, 1) },
@@ -463,12 +468,18 @@ function createWorld() {
         mini.group.scale.setScalar(SM * (.7 + .3 * mm));
         mini.group.rotation.y += dt * .12;
         const back = smooth(0, ring.Rr * 2, -mini.group.position.z); // further round the ring = dimmer
+        mini.group.updateMatrixWorld();
         for (const p of mini.plates) {
+          p.m.getWorldPosition(v);
+          nW.copy(v).sub(mini.group.position).normalize();
+          toCam.copy(camera.position).sub(v).normalize();
+          const facing = nW.dot(toCam);
+          const shade = facing > 0 ? .55 + .45 * smooth(.05, .8, facing) : .45;
           const u = p.m.material.uniforms;
           if (p.tex.t && u.uMap.value !== p.tex.t) { u.uMap.value = p.tex.t; u.uCrop.value.copy(p.tex.crop); }
           p.has += ((p.tex.t ? 1 : 0) - p.has) * .08;
           u.uHas.value = p.has;
-          u.uBright.value = .92 * vis * (1 - back * .35);
+          u.uBright.value = .92 * vis * (1 - back * .35) * shade;
           u.uFog.value = back * .45;
         }
       }
