@@ -5,6 +5,8 @@
 // NEVER put the service_role key in this file (or anywhere in this repository).
 //
 // CITIES: every city with a folder in this repo (plated.gallery/<key>/).
+//   live: true  -> the city appears in the city ring (switch it on when the city opens,
+//                  at the same time as its link on the front page).
 
 export default {
   SITE_URL: 'https://plated.gallery',
@@ -13,9 +15,9 @@ export default {
   SUPABASE_ANON_KEY: 'sb_publishable_MWvsjF5YKAR7wVGd30uShQ_gpRVw05T',
   PAGE_SIZE: 18,
   CITIES: {
-    ottawa: { name: 'Ottawa', region: 'ON', country: 'CA' },
-    toronto: { name: 'Toronto', region: 'ON', country: 'CA' },
-    montreal: { name: 'Montréal', region: 'QC', country: 'CA' },
-    'new-york': { name: 'New York', region: 'NY', country: 'US' },
+    ottawa: { name: 'Ottawa', region: 'ON', country: 'CA', live: true },
+    toronto: { name: 'Toronto', region: 'ON', country: 'CA', live: true },
+    montreal: { name: 'Montréal', region: 'QC', country: 'CA', live: false },
+    'new-york': { name: 'New York', region: 'NY', country: 'US', live: false },
   },
 };
