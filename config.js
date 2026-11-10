@@ -17,7 +17,7 @@ export default {
   CITIES: {
     ottawa: { name: 'Ottawa', region: 'ON', country: 'CA', live: true },
     toronto: { name: 'Toronto', region: 'ON', country: 'CA', live: true },
-    montreal: { name: 'Montréal', region: 'QC', country: 'CA', live: false },
+    montreal: { name: 'Montréal', region: 'QC', country: 'CA', live: true },
     'new-york': { name: 'New York', region: 'NY', country: 'US', live: false },
   },
 };

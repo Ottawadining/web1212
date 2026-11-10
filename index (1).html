@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="no-js is-front" data-front="toronto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plated — A world of beautiful food</title>
+<meta name="description" content="Plated is a gallery of beautiful food photography, city by city. Ottawa, Toronto, Montréal, New York.">
+<link rel="canonical" href="https://plated.gallery/">
+<meta name="theme-color" content="#0b0a08">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Plated">
+<meta property="og:title" content="Plated — A world of beautiful food">
+<meta property="og:description" content="A gallery of beautiful food photography, city by city.">
+<meta property="og:url" content="https://plated.gallery/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/world.css?v=20261109f">
+<script>document.documentElement.classList.remove('no-js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","@id":"https://plated.gallery/#site","name":"Plated","url":"https://plated.gallery/","description":"A gallery of beautiful food photography, city by city."}
+</script>
+</head>
+<body>
+<a class="skip" href="#index">Skip to the cities</a>
+
+<!-- The front door. "Enter" opens the ring of city globes; data-front (above) is the city in front. -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-word"><span>P</span><span>L</span><span>A</span><span>T</span><span>E</span><span>D</span></div>
+  <p class="ld-tag">A world of beautiful food.</p>
+  <div class="ld-foot">
+    <span class="mono" id="ld-pct">000</span>
+    <button class="enter" id="enter" type="button" tabindex="-1">Enter</button>
+    <span class="mono">plated.gallery</span>
+  </div>
+</div>
+
+<canvas class="world" id="world" aria-hidden="true"></canvas>
+
+<header class="hud hud-top">
+  <a class="mark" href="/" aria-label="Plated — home">PLATED</a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/toronto/submit.html"><i>01</i>Submit</a>
+    <a href="/"><i>02</i>Cities</a>
+  </nav>
+</header>
+
+<div class="hud hud-bottom" aria-hidden="true">
+  <p class="count"><span id="count"></span></p>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 60 60"><circle class="cur-track" cx="30" cy="30" r="26"/><circle class="cur-prog" cx="30" cy="30" r="26"/></svg>
+  <span class="cur-label">Drag</span>
+</div>
+
+<main id="main">
+  <h1 class="sr">Plated — a world of beautiful food</h1>
+  <!-- what search engines, and phones without 3D, see -->
+  <section class="index" id="index" aria-label="The cities">
+    <div class="ix-head">
+      <p class="mono">The cities</p>
+      <p class="ix-lede">A gallery of beautiful food photography, city by city.</p>
+    </div>
+    <ol class="grid cities-list" id="grid">
+      <li><a href="/ottawa/">Ottawa</a></li>
+      <li><a href="/toronto/">Toronto</a></li>
+      <li><a href="/montreal/">Montréal</a></li>
+    </ol>
+    <footer class="ix-foot">
+      <p>© Plated</p>
+      <p><a href="/ottawa/">Ottawa</a><a href="/toronto/">Toronto</a><a href="/montreal/">Montréal</a></p>
+    </footer>
+  </section>
+</main>
+
+<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="Photograph detail" hidden>
+  <button type="button" class="rv-close" id="rv-close">Close</button>
+  <div class="rv-body" id="rv-body"></div>
+</div>
+
+<script type="application/json" id="seed">{"items":[],"total":0}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
+<script type="module" src="/assets/world.js?v=20261109f"></script>
+</body>
+</html>
