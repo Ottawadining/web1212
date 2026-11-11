@@ -16,7 +16,7 @@ export default {
   PAGE_SIZE: 18,
   // My Sphere accounts (optional: saving works without them). Switch a method on once it is set up
   // in Supabase -> Authentication. With both off, visitors still save plates on their own device.
-  SIGN_IN: { google: false, email: false },
+  SIGN_IN: { google: true, email: false },
   CITIES: {
     ottawa: { name: 'Ottawa', region: 'ON', country: 'CA', live: true },
     toronto: { name: 'Toronto', region: 'ON', country: 'CA', live: true },
