@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" class="no-js is-my" data-city="my" data-home="/my/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Sphere — Plated</title>
+<meta name="description" content="The plates you saved on Plated, from every city.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://plated.gallery/my/">
+<meta name="theme-color" content="#0b0a08">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/world.css?v=20261110a">
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+<body>
+<a class="skip" href="#index">Skip to your plates</a>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-word"><span>P</span><span>L</span><span>A</span><span>T</span><span>E</span><span>D</span></div>
+  <p class="ld-tag">My Sphere.</p>
+  <div class="ld-foot">
+    <span class="mono" id="ld-pct">000</span>
+    <button class="enter" id="enter" type="button" tabindex="-1">Enter</button>
+    <span class="mono">plated.gallery</span>
+  </div>
+</div>
+
+<canvas class="world" id="world" aria-hidden="true"></canvas>
+
+<header class="hud hud-top">
+  <a class="mark" href="/my/" aria-label="My Sphere — Plated">MY<b>SPHERE</b></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="/toronto/submit.html"><i>01</i>Submit</a>
+    <a href="/"><i>02</i>Cities</a>
+  </nav>
+</header>
+
+<div class="hud hud-bottom" aria-hidden="true">
+  <p class="count"><span id="count"></span></p>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <svg viewBox="0 0 60 60"><circle class="cur-track" cx="30" cy="30" r="26"/><circle class="cur-prog" cx="30" cy="30" r="26"/></svg>
+  <span class="cur-label">Drag</span>
+</div>
+
+<main id="main">
+  <h1 class="sr">My Sphere — the plates you saved</h1>
+  <section class="index" id="index" aria-label="My Sphere">
+    <div class="ix-head">
+      <p class="mono">My Sphere</p>
+      <p class="ix-lede">The plates you saved, from every city.</p>
+    </div>
+    <ol class="grid" id="grid"></ol>
+    <footer class="ix-foot">
+      <p>© Plated</p>
+      <p><a href="/">Cities</a></p>
+    </footer>
+  </section>
+</main>
+
+<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="Photograph detail" hidden>
+  <button type="button" class="rv-close" id="rv-close">Close</button>
+  <div class="rv-body" id="rv-body"></div>
+</div>
+
+<script type="application/json" id="seed">{"items":[],"total":0}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
+<script type="module" src="/assets/world.js?v=20261110a"></script>
+</body>
+</html>
