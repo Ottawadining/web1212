@@ -17,6 +17,9 @@ export default {
   // Collection accounts (optional: saving works without them). Switch a method on once it is set up
   // in Supabase -> Authentication. With both off, visitors still save plates on their own device.
   SIGN_IN: { google: true, email: false },
+  // Google sign-in: the Client ID from Google Cloud -> Google Auth Platform -> Clients -> Plated web.
+  // With it, Google's own sign-in window says plated.gallery instead of the Supabase address.
+  GOOGLE_CLIENT_ID: '335350951489-opr3m4u5a0h5rhp0t8opr7kj7bshh6ho.apps.googleusercontent.com',
   CITIES: {
     ottawa: { name: 'Ottawa', region: 'ON', country: 'CA', live: true },
     toronto: { name: 'Toronto', region: 'ON', country: 'CA', live: true },
