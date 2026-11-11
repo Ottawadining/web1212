@@ -18,6 +18,7 @@ const store = {
 const readList = (k) => { try { const a = JSON.parse(store.get(k) || '[]'); return Array.isArray(a) ? a.filter((x) => Array.isArray(x) && typeof x[0] === 'string') : []; } catch { return []; } };
 
 export const SIGN_IN = { google: !!CONFIG.SIGN_IN?.google, email: !!CONFIG.SIGN_IN?.email };
+const GOOGLE_ID = /\.apps\.googleusercontent\.com$/.test(CONFIG.GOOGLE_CLIENT_ID || '') ? CONFIG.GOOGLE_CLIENT_ID : '';
 export const ACCOUNTS = LIVE && (SIGN_IN.google || SIGN_IN.email);
 
 let saved = new Map();          // dishId -> savedAt (ms)
@@ -166,7 +167,7 @@ function view(state, email = '') {
   return `<p class="ac-kicker mono">Collection</p>
     <h2 class="ac-title">Keep your collection.</h2>
     <p class="ac-text">Sign in to protect the plates you save and see them on any device. Nothing else changes.</p>
-    ${SIGN_IN.google ? `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>` : ''}
+    ${SIGN_IN.google ? (GOOGLE_ID ? '<div class="ac-gslot" aria-label="Continue with Google"></div>' : `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>`) : ''}
     ${SIGN_IN.google && SIGN_IN.email ? '<p class="ac-or mono"><span>or</span></p>' : ''}
     ${SIGN_IN.email ? `<form class="ac-form" data-act="email" novalidate>
         <input class="ac-input" name="email" type="email" autocomplete="email" placeholder="Email address" aria-label="Email address" value="${esc(email)}">
@@ -181,6 +182,61 @@ function render(state, email) {
   body.dataset.email = email || '';
   const f = body.querySelector('input, button');
   if (f && matchMedia('(hover: hover)').matches) f.focus({ preventScroll: true });
+  const slot = body.querySelector('.ac-gslot');
+  if (slot) googleButton(slot);
+}
+
+/* Google's own button (Google Identity Services): its sign-in window names plated.gallery, and the
+   visitor stays on the page they were on. Falls back to the redirect button if Google's script fails. */
+let gsiLoading = null;
+function loadGsi() {
+  if (window.google?.accounts?.id) return Promise.resolve();
+  if (!gsiLoading) {
+    gsiLoading = new Promise((ok, fail) => {
+      const s = document.createElement('script');
+      s.src = 'https://accounts.google.com/gsi/client';
+      s.async = true; s.onload = ok; s.onerror = fail;
+      document.head.appendChild(s);
+    });
+    gsiLoading.catch(() => { gsiLoading = null; });
+  }
+  return gsiLoading;
+}
+async function sha256hex(t) {
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('');
+}
+async function googleButton(slot) {
+  try {
+    await loadGsi();
+    const raw = [...crypto.getRandomValues(new Uint8Array(16))].map((x) => x.toString(16).padStart(2, '0')).join('');
+    const hashed = await sha256hex(raw);
+    if (!slot.isConnected) return;
+    window.google.accounts.id.initialize({
+      client_id: GOOGLE_ID,
+      nonce: hashed,
+      ux_mode: 'popup',
+      itp_support: true,
+      callback: async (res) => {
+        err('');
+        try {
+          await client();
+          const { data, error } = await sb.auth.signInWithIdToken({ provider: 'google', token: res.credential, nonce: raw });
+          if (error) throw error;
+          if (data.user) await adopt(data.user);
+        } catch (x) { console.error(x); err('That didn’t work. Please try again in a moment.'); render('start'); }
+      },
+    });
+    slot.innerHTML = '';
+    window.google.accounts.id.renderButton(slot, {
+      type: 'standard', theme: 'filled_black', size: 'large', shape: 'rectangular',
+      text: 'continue_with', logo_alignment: 'center', width: Math.min(400, Math.round(slot.clientWidth || 320)),
+    });
+    slot.classList.add('is-ready');
+  } catch (x) {
+    console.warn('Google sign-in script unavailable, using redirect', x);
+    slot.outerHTML = `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>`;
+  }
 }
 
 function openPanel() {
@@ -203,6 +259,7 @@ function openPanel() {
   document.documentElement.classList.add('is-acct');
   requestAnimationFrame(() => panel.classList.add('is-open'));
   client().catch(() => {}); // warm up while they choose
+  if (SIGN_IN.google && GOOGLE_ID) loadGsi().catch(() => {});
 }
 
 function closePanel() {
