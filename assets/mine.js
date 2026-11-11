@@ -1,9 +1,9 @@
-// Plated — My Sphere: the plates a visitor keeps, from every city.
+// Plated — Collection: the plates a visitor keeps, from every city.
 // Without an account, saves live in this browser (localStorage). With one (optional, Supabase Auth:
 // Google or an emailed link/code), they live in public.saved_plates and follow the visitor to any
 // device; anything saved on this device before signing in is merged into the account.
 // The sign-in library only loads when someone opens the sign-in panel or is already signed in.
-import { CONFIG, LIVE, esc, fetchByIds } from './core.js?v=20261110a';
+import { CONFIG, LIVE, esc, fetchByIds } from './core.js?v=20261110b';
 
 const LOCAL = 'plated-saved';        // [[dishId, savedAtMs], ...] while signed out
 const MIRROR = 'plated-saved-acct';  // copy of the account's list, so hearts show instantly on load
@@ -66,7 +66,7 @@ async function adopt(u) {
         if (error) throw error;
       }
       store.del(LOCAL);
-    } catch (e) { console.error('My Sphere: could not merge this device yet', e); }
+    } catch (e) { console.error('Collection: could not merge this device yet', e); }
   }
   await pull();
   closePanel();
@@ -103,7 +103,7 @@ export const mine = {
       if (data.session?.user) { if (!user) await adopt(data.session.user); }
       else dropUser(); // the session had expired
       if (returning()) history.replaceState(history.state, '', location.pathname + location.search);
-    } catch (e) { console.error('My Sphere: sign-in unavailable', e); }
+    } catch (e) { console.error('Collection: sign-in unavailable', e); }
   },
 
   // save or unsave; resolves to the new state
@@ -147,8 +147,8 @@ const G = '<svg viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M
 
 function view(state, email = '') {
   if (user) {
-    return `<p class="ac-kicker mono">My Sphere</p>
-      <h2 class="ac-title">Your sphere follows you.</h2>
+    return `<p class="ac-kicker mono">Collection</p>
+      <h2 class="ac-title">Your collection follows you.</h2>
       <p class="ac-text">Signed in as ${esc(user.email || 'you')}. Plates you save appear on every device where you sign in.</p>
       <button type="button" class="ac-line" data-act="out">Sign out</button>`;
   }
@@ -163,8 +163,8 @@ function view(state, email = '') {
       <p class="ac-err" role="alert"></p>
       <button type="button" class="ac-line" data-act="back">Use a different email</button>`;
   }
-  return `<p class="ac-kicker mono">My Sphere</p>
-    <h2 class="ac-title">Keep your sphere.</h2>
+  return `<p class="ac-kicker mono">Collection</p>
+    <h2 class="ac-title">Keep your collection.</h2>
     <p class="ac-text">Sign in to protect the plates you save and see them on any device. Nothing else changes.</p>
     ${SIGN_IN.google ? `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>` : ''}
     ${SIGN_IN.google && SIGN_IN.email ? '<p class="ac-or mono"><span>or</span></p>' : ''}
@@ -190,7 +190,7 @@ function openPanel() {
     panel.className = 'acct';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
-    panel.setAttribute('aria-label', 'My Sphere account');
+    panel.setAttribute('aria-label', 'Collection account');
     panel.innerHTML = '<button type="button" class="rv-close ac-close">Close</button><div class="ac-card"><div class="ac-body"></div></div>';
     document.body.appendChild(panel);
     panel.addEventListener('click', onClick);
@@ -215,7 +215,7 @@ function closePanel() {
 
 const err = (msg) => { const el = panel.querySelector('.ac-err'); if (el) el.textContent = msg; };
 const busy = (el, on) => { if (el) { el.disabled = on; el.classList.toggle('is-busy', on); } };
-const back = () => `${location.origin}/my/`;
+const back = () => `${location.origin}/collection/`;
 
 async function onClick(e) {
   if (e.target === panel || e.target.closest('.ac-close')) { closePanel(); return; }

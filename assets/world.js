@@ -2,13 +2,13 @@
 // A globe of plates (three.js): drag to spin it, scroll or pinch to fly in, tap a plate to open it.
 // "Cities" pulls back to a ring of small city globes: swipe to spin the ring, tap a globe to fly into
 // that city (the page swaps city in place). A hidden list keeps the collection crawlable.
-// My Sphere (/my/) is one more globe on the ring: the plates a visitor has saved, from every city.
+// Collection (/collection/) is one more globe on the ring: the plates a visitor has saved, from every city.
 import * as THREE from 'three';
-import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js?v=20261110a';
-import { mine, ACCOUNTS } from './mine.js?v=20261110a';
+import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js?v=20261110b';
+import { mine, ACCOUNTS } from './mine.js?v=20261110b';
 
-const MY = 'my';
-const nameOf = (k) => (k === MY ? 'My Sphere' : cityName(k));
+const MY = 'collection';
+const nameOf = (k) => (k === MY ? 'Collection' : cityName(k));
 
 const root = document.documentElement;
 const $ = (id) => document.getElementById(id);
@@ -55,7 +55,7 @@ function hash(x, y, s) {
 
 /* ---------- hidden collection (search engines, no-WebGL and reduced-motion visitors) ---------- */
 function renderIndex() {
-  grid.innerHTML = items.length ? items.map(tileHTML).join('') : `<li class="empty">${city === MY ? 'Your sphere is empty. Save plates you love and they gather here.' : 'The first plates arrive soon.'}</li>`;
+  grid.innerHTML = items.length ? items.map(tileHTML).join('') : `<li class="empty">${city === MY ? 'Your collection is empty. Save plates you love and they gather here.' : 'The first plates arrive soon.'}</li>`;
   countEl.textContent = `${items.length} ${items.length === 1 ? 'plate' : 'plates'}`;
 }
 
@@ -220,7 +220,7 @@ function createWorld() {
     plates.forEach((p) => { globe.remove(p.m); p.m.material.dispose(); globe.remove(p.sh); p.sh.material.dispose(); });
     plates = [];
     const n = items.length;
-    const ghost = !n && mainCity === MY; // an empty My Sphere: a globe of bare frames
+    const ghost = !n && mainCity === MY; // an empty Collection: a globe of bare frames
     if (!n && !ghost) { meshes = []; return; }
     const N = ghost ? GHOST_N : plateCount(n);   // ~160 plates fill the shell
     const size = plateSize(N); // about half the surface covered
@@ -740,11 +740,11 @@ function plateMarkup(d) {
   </div>`;
 }
 
-/* ---------- saving a plate to My Sphere ---------- */
+/* ---------- saving a plate to your Collection ---------- */
 // a small plate: an outline when it isn't kept, filled when it is
 function saveButton(d) {
   const on = mine.has(d.id);
-  return `<button type="button" class="rv-save${on ? ' is-on' : ''}" data-id="${esc(d.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove from My Sphere' : 'Save to My Sphere'}" title="${on ? 'In My Sphere' : 'Save to My Sphere'}">
+  return `<button type="button" class="rv-save${on ? ' is-on' : ''}" data-id="${esc(d.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove from Collection' : 'Save to Collection'}" title="${on ? 'In your Collection' : 'Save to Collection'}">
     <svg viewBox="0 0 20 20" aria-hidden="true"><circle class="s-ring" cx="10" cy="10" r="8.5"/><circle class="s-fill" cx="10" cy="10" r="5"/></svg>
     <span class="rv-save-note" aria-hidden="true"></span>
   </button>`;
@@ -755,8 +755,8 @@ function syncSave() {
   const on = mine.has(b.dataset.id);
   b.classList.toggle('is-on', on);
   b.setAttribute('aria-pressed', String(on));
-  b.setAttribute('aria-label', on ? 'Remove from My Sphere' : 'Save to My Sphere');
-  b.title = on ? 'In My Sphere' : 'Save to My Sphere';
+  b.setAttribute('aria-label', on ? 'Remove from Collection' : 'Save to Collection');
+  b.title = on ? 'In your Collection' : 'Save to Collection';
 }
 let sphereDirty = false;
 rvBody.addEventListener('click', async (e) => {
@@ -767,7 +767,7 @@ rvBody.addEventListener('click', async (e) => {
   const on = await mine.toggle(d);
   if (city === MY) sphereDirty = true;
   const note = b.querySelector('.rv-save-note');
-  note.textContent = on ? 'Saved to My Sphere' : 'Removed';
+  note.textContent = on ? 'Saved to Collection' : 'Removed';
   b.classList.remove('is-noted'); void b.offsetWidth; b.classList.add('is-noted');
   if (on) { b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop'); }
 });
@@ -821,7 +821,7 @@ function hidePlate() {
   if (sphereDirty && city === MY) refreshSphere();
 }
 
-// My Sphere changed while you were in it: rebuild its globe from the saved plates
+// the Collection changed while you were in it: rebuild its globe from the saved plates
 async function refreshSphere() {
   sphereDirty = false;
   const list = await mine.list().catch(() => null);
@@ -930,15 +930,15 @@ function applyCity(k, list, push) {
   if (push) history.pushState({ city: k }, '', HOME_PATH);
 }
 
-// the page becomes My Sphere
+// the page becomes your Collection
 function applyMine(push) {
   root.dataset.city = MY; root.dataset.home = `/${MY}/`;
   HOME_PATH = `/${MY}/`;
-  HOME_TITLE = document.title = 'My Sphere — Plated';
+  HOME_TITLE = document.title = 'Collection — Plated';
   const mark = document.querySelector('.hud-top .mark');
-  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', 'My Sphere — Plated'); mark.innerHTML = 'MY<b>SPHERE</b>'; }
+  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', 'Collection — Plated'); mark.innerHTML = 'COLLECTION'; }
   const canon = document.querySelector('link[rel="canonical"]'); if (canon) canon.href = `${CONFIG.SITE_URL}/${MY}/`;
-  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = 'My Sphere — the plates you saved';
+  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = 'Collection — the plates you saved';
   const lede = document.querySelector('.ix-lede'); if (lede) lede.textContent = 'The plates you saved, from every city.';
   setNoindex(true);
   renderIndex();
@@ -953,7 +953,7 @@ function setNoindex(on) {
   if (m && on) m.dataset.mine = '1';
 }
 
-/* ---------- My Sphere: the account link, the empty state and a quiet nudge ---------- */
+/* ---------- Collection: the account link, the empty state and a quiet nudge ---------- */
 const acctLink = (() => {
   const nav = document.querySelector('.hud-top .nav');
   if (!nav) return null;
@@ -980,7 +980,7 @@ function updateNote() {
   }
   let html = '';
   if (city === MY && !items.length) {
-    html = '<p>Your sphere is empty. Tap <svg viewBox="0 0 20 20" aria-label="the small circle"><circle cx="10" cy="10" r="8.5"/></svg> on any plate to keep it here.</p>';
+    html = '<p>Your collection is empty. Tap <svg viewBox="0 0 20 20" aria-label="the small circle"><circle cx="10" cy="10" r="8.5"/></svg> on any plate to keep it here.</p>';
   } else if (city === MY && ACCOUNTS && !mine.user && mine.count() >= 3 && !mine.nudgeOff()) {
     html = '<p>Saved on this device. <a href="#account" data-act="in">Sign in</a> to keep it everywhere.</p><button type="button" data-act="x" aria-label="Dismiss">×</button>';
   }
@@ -1103,7 +1103,7 @@ async function boot() {
   }).catch((e) => console.error(e));
 }
 
-// plated.gallery/my/: no loader, straight into your sphere (or its empty frames)
+// plated.gallery/collection/: no loader, straight into your collection (or its empty frames)
 async function bootMine(signin) {
   await signin;
   items = await mine.list().catch(() => []);

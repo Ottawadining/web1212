@@ -185,8 +185,8 @@ html, .world, .ring-labels { -webkit-tap-highlight-color: transparent; }
 .cities-list li a { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: clamp(22px, 3vw, 32px); letter-spacing: -.01em; }
 .cities-list li::after { display: none; }
 
-/* ---------- My Sphere ---------- */
-/* the account link only shows inside My Sphere, where Submit steps aside */
+/* ---------- Collection (saved plates) ---------- */
+/* the account link only shows inside the Collection, where Submit steps aside */
 .nav .nav-acct { display: none; }
 .is-my .nav .nav-acct:not([hidden]) { display: inline-block; }
 .is-my .nav a[href$="/submit.html"] { display: none; }
@@ -210,7 +210,7 @@ html, .world, .ring-labels { -webkit-tap-highlight-color: transparent; }
 .rv-save:focus-visible { outline: none; }
 .rv-save:focus-visible .s-ring { stroke-width: 1.6; }
 
-/* the empty state and the gentle sign-in nudge, at the foot of My Sphere */
+/* the empty state and the gentle sign-in nudge, at the foot of the Collection */
 .my-note { position: fixed; left: 50%; bottom: max(calc(var(--pad) + 4px), env(safe-area-inset-bottom)); z-index: 11; transform: translate(-50%, 8px); display: flex; align-items: center; gap: 14px; width: max-content; max-width: calc(100vw - var(--pad) * 2); font-size: 13px; line-height: 1.4; color: var(--mute); text-align: center; opacity: 0; pointer-events: none; transition: opacity .8s var(--out), transform .8s var(--out); }
 .my-note.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; transition-delay: .4s; }
 .is-ring .my-note, .is-viewing .my-note, .is-acct .my-note, .is-static .my-note { opacity: 0; pointer-events: none; transition-delay: 0s; }
