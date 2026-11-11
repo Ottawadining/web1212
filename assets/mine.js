@@ -206,6 +206,14 @@ async function sha256hex(t) {
   const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
   return [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
+function showAltGoogle() {
+  const body = panel?.querySelector('.ac-body');
+  if (!body || body.querySelector('.ac-alt')) return;
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'ac-line ac-alt'; b.dataset.act = 'google';
+  b.textContent = 'Trouble signing in? Use Google another way';
+  body.appendChild(b);
+}
 async function googleButton(slot) {
   try {
     await loadGsi();
@@ -224,7 +232,11 @@ async function googleButton(slot) {
           const { data, error } = await sb.auth.signInWithIdToken({ provider: 'google', token: res.credential, nonce: raw });
           if (error) throw error;
           if (data.user) await adopt(data.user);
-        } catch (x) { console.error(x); err('That didn’t work. Please try again in a moment.'); render('start'); }
+        } catch (x) {
+          console.error(x);
+          err(`Google sign-in didn’t finish${x?.message ? ` (${x.message})` : ''}. You can try the other way below.`);
+          showAltGoogle();
+        }
       },
     });
     slot.innerHTML = '';
@@ -233,6 +245,8 @@ async function googleButton(slot) {
       text: 'continue_with', logo_alignment: 'center', width: Math.min(400, Math.round(slot.clientWidth || 320)),
     });
     slot.classList.add('is-ready');
+    // a quiet second route, in case Google's window can't open on this browser
+    setTimeout(() => { if (slot.isConnected && panel && !panel.hidden && !user) showAltGoogle(); }, 4000);
   } catch (x) {
     console.warn('Google sign-in script unavailable, using redirect', x);
     slot.outerHTML = `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>`;
