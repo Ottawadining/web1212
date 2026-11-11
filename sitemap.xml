@@ -1061,6 +1061,66 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/new-york/dish/petits-farcis-zimmi-s.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fe6ba41c-1168-48eb-a723-dbec0bf4c015-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/tuna-crudo-raf-s.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1be22ed1-1446-4ab1-a75c-1ee2ad6b8878-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/anchovies-with-neonata-butter-borgo.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1786bd77-b0fd-4c89-9a80-f6f84b9f7001-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/maine-lobster-eleven-madison-park.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/66bc3119-c51e-41b3-a936-af1fedcaf1f2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/hake-aska.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/651d0035-05a0-4087-8534-3746d3064360-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/marinated-fluke-slivers-le-bernardin.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/56da3c41-e4cd-4a0d-97ab-a651e461d257-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/gem-lettuces-per-se.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/222eb1a0-cf4d-4e6b-9b1b-74e3bc16b51e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/heritage-pork-tenderloin-chambers.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9db929ea-c298-4f8a-b2ce-03fc7baf82b8-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/abalone-atomix.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8b5cfe27-d6f4-4859-9540-c7d47e9a649a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/grilled-razor-clams-smithereens.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1dab8821-ad79-4571-9920-d9cb81d6b79c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/new-york/dish/black-sea-bass-provencal-union-square-cafe.html</loc>
     <lastmod>2026-11-11</lastmod>
     <priority>0.7</priority>
