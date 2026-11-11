@@ -184,3 +184,74 @@ html, .world, .ring-labels { -webkit-tap-highlight-color: transparent; }
 .cities-list { grid-template-columns: 1fr; gap: 0; }
 .cities-list li a { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: clamp(22px, 3vw, 32px); letter-spacing: -.01em; }
 .cities-list li::after { display: none; }
+
+/* ---------- My Sphere ---------- */
+/* the account link only shows inside My Sphere, where Submit steps aside */
+.nav .nav-acct { display: none; }
+.is-my .nav .nav-acct:not([hidden]) { display: inline-block; }
+.is-my .nav a[href$="/submit.html"] { display: none; }
+
+/* save: a small plate under the label, outlined until it's kept */
+.rv-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.rv-actions .rv-link { margin-top: 0; }
+.rv-label > .rv-actions { transition: opacity .9s var(--out), transform 1s var(--out); transition-delay: calc(.55s + var(--i, 0) * .08s); }
+.rv-save { position: relative; display: inline-flex; align-items: center; gap: 10px; margin-left: auto; padding: 8px 0 8px 8px; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.rv-save svg { width: 20px; height: 20px; flex: none; overflow: visible; }
+.rv-save .s-ring { fill: none; stroke: currentColor; stroke-width: 1; opacity: .55; transition: opacity .4s var(--out); }
+.rv-save .s-fill { fill: currentColor; transform-origin: 10px 10px; transform: scale(0); transition: transform .5s var(--out); }
+.rv-save:hover .s-ring, .rv-save:focus-visible .s-ring { opacity: 1; }
+.rv-save.is-on .s-ring { opacity: .9; }
+.rv-save.is-on .s-fill { transform: scale(1); }
+.rv-save.is-pop svg { animation: plate-set .6s var(--out); }
+@keyframes plate-set { 0% { transform: scale(1); } 35% { transform: scale(.82); } 100% { transform: scale(1); } }
+.rv-save-note { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); white-space: nowrap; opacity: 0; pointer-events: none; }
+.rv-save.is-noted .rv-save-note { animation: note-fade 2.6s var(--out); }
+@keyframes note-fade { 0% { opacity: 0; } 12% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+.rv-save:focus-visible { outline: none; }
+.rv-save:focus-visible .s-ring { stroke-width: 1.6; }
+
+/* the empty state and the gentle sign-in nudge, at the foot of My Sphere */
+.my-note { position: fixed; left: 50%; bottom: max(calc(var(--pad) + 4px), env(safe-area-inset-bottom)); z-index: 11; transform: translate(-50%, 8px); display: flex; align-items: center; gap: 14px; width: max-content; max-width: calc(100vw - var(--pad) * 2); font-size: 13px; line-height: 1.4; color: var(--mute); text-align: center; opacity: 0; pointer-events: none; transition: opacity .8s var(--out), transform .8s var(--out); }
+.my-note.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; transition-delay: .4s; }
+.is-ring .my-note, .is-viewing .my-note, .is-acct .my-note, .is-static .my-note { opacity: 0; pointer-events: none; transition-delay: 0s; }
+.my-note svg { width: 13px; height: 13px; vertical-align: -2px; margin: 0 1px; }
+.my-note svg circle { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.my-note a { color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: border-color .3s; }
+.my-note a:hover { border-color: var(--ink); }
+.my-note button { font: 16px/1 var(--sans); color: var(--mute); padding: 4px 6px; }
+.my-note button:hover { color: var(--ink); }
+
+/* the sign-in panel: the globe blurs behind it, like an opened photograph */
+.is-acct .world { filter: blur(16px) brightness(.42) saturate(.85); transform: scale(1.05); }
+.is-acct .hud-top { opacity: 0 !important; pointer-events: none; }
+.is-acct .cursor { opacity: 0; }
+.acct { position: fixed; inset: 0; z-index: 25; display: grid; place-items: center; padding: var(--pad); overflow-y: auto; background: rgba(11, 10, 8, 0); transition: background .6s var(--out); }
+.acct[hidden] { display: none; }
+.acct.is-open { background: rgba(11, 10, 8, .35); }
+.acct .ac-close { opacity: 0; }
+.acct.is-open .ac-close { opacity: 1; transition-delay: .2s; }
+.ac-card { width: min(360px, 100%); opacity: 0; transform: translateY(12px); transition: opacity .6s var(--out), transform .8s var(--out); }
+.acct.is-open .ac-card { opacity: 1; transform: none; transition-delay: .1s; }
+.ac-body::before { content: ''; display: block; width: 24px; height: 1px; background: var(--line); margin-bottom: 18px; }
+.ac-kicker { color: var(--mute); margin-bottom: 10px; }
+.ac-title { font-weight: 400; font-size: 24px; line-height: 1.15; letter-spacing: -.01em; }
+.ac-text { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--mute); }
+.ac-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 46px; margin-top: 22px; border: 1px solid var(--line); font-size: 14px; color: var(--ink); transition: border-color .3s, background .3s, opacity .3s; }
+.ac-btn:hover { border-color: rgba(236, 230, 216, .5); }
+.ac-btn svg { width: 17px; height: 17px; }
+.ac-btn:disabled { opacity: .5; cursor: default; }
+.ac-google { background: rgba(236, 230, 216, .04); }
+.ac-or { display: flex; align-items: center; gap: 12px; margin: 18px 0 0; color: var(--mute); }
+.ac-or::before, .ac-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.ac-form { margin-top: 18px; }
+.ac-or + .ac-form { margin-top: 18px; }
+.ac-form .ac-btn { margin-top: 10px; }
+.ac-input { display: block; width: 100%; height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink); font: 16px var(--sans); outline: none; transition: border-color .3s; -webkit-appearance: none; appearance: none; }
+.ac-input::placeholder { color: rgba(236, 230, 216, .35); }
+.ac-input:focus { border-color: rgba(236, 230, 216, .6); }
+.ac-err { min-height: 1.4em; margin-top: 12px; font-size: 13px; color: #d9a76a; }
+.ac-err:empty { min-height: 0; margin: 0; }
+.ac-line { margin-top: 20px; padding: 4px 0; font: 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); border-bottom: 1px solid var(--line); }
+.ac-line:hover { color: var(--ink); border-color: var(--ink); }
+.rv-actions .rv-save:only-child { margin-left: -8px; padding-left: 8px; }
+.rv-save:only-child .rv-save-note { right: auto; left: 38px; }

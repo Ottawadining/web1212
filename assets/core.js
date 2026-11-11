@@ -109,6 +109,19 @@ export async function fetchAll(city = PAGE_CITY) {
   return out;
 }
 
+/** Published dishes with these ids, from any city (My Sphere). Unpublished or deleted ones are left out. */
+export async function fetchByIds(ids) {
+  if (!LIVE || !ids.length) return [];
+  const out = [];
+  for (let i = 0; i < ids.length; i += 100) {
+    const chunk = ids.slice(i, i + 100).filter((id) => /^[0-9a-zA-Z-]+$/.test(id));
+    if (!chunk.length) continue;
+    const { rows } = await rest(`select=${COLS}&published=eq.true&id=in.(${chunk.join(',')})`);
+    out.push(...rows.map(normalize));
+  }
+  return out;
+}
+
 /* ---------- rendering ---------- */
 export function tileHTML(d, i) {
   const eager = i < 6;

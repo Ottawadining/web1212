@@ -2,8 +2,13 @@
 // A globe of plates (three.js): drag to spin it, scroll or pinch to fly in, tap a plate to open it.
 // "Cities" pulls back to a ring of small city globes: swipe to spin the ring, tap a globe to fly into
 // that city (the page swaps city in place). A hidden list keeps the collection crawlable.
+// My Sphere (/my/) is one more globe on the ring: the plates a visitor has saved, from every city.
 import * as THREE from 'three';
-import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js';
+import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js?v=20261110a';
+import { mine, ACCOUNTS } from './mine.js?v=20261110a';
+
+const MY = 'my';
+const nameOf = (k) => (k === MY ? 'My Sphere' : cityName(k));
 
 const root = document.documentElement;
 const $ = (id) => document.getElementById(id);
@@ -50,7 +55,7 @@ function hash(x, y, s) {
 
 /* ---------- hidden collection (search engines, no-WebGL and reduced-motion visitors) ---------- */
 function renderIndex() {
-  grid.innerHTML = items.length ? items.map(tileHTML).join('') : '<li class="empty">The first plates arrive soon.</li>';
+  grid.innerHTML = items.length ? items.map(tileHTML).join('') : `<li class="empty">${city === MY ? 'Your sphere is empty. Save plates you love and they gather here.' : 'The first plates arrive soon.'}</li>`;
   countEl.textContent = `${items.length} ${items.length === 1 ? 'plate' : 'plates'}`;
 }
 
@@ -81,13 +86,18 @@ uniform float uHas;
 uniform float uBright;
 uniform float uFog;
 uniform float uBack;
+uniform float uGhost;
 varying vec2 vUv;
 void main() {
   // plates lie flat on the sphere; from behind (far side, or from inside) un-mirror the photo
   vec2 uv = gl_FrontFacing ? vUv : vec2(1.0 - vUv.x, vUv.y);
   vec3 c = texture2D(uMap, uCrop.xy + uv * uCrop.zw).rgb;
   if (!gl_FrontFacing) c *= uBack;
-  c = mix(vec3(0.082, 0.075, 0.059), c, uHas) * uBright;
+  c = mix(vec3(0.082, 0.075, 0.059), c, uHas);
+  // an empty sphere: each plate is a bare frame, a fine line round a dark square
+  float edge = min(min(uv.x, 1.0 - uv.x), min(uv.y, 1.0 - uv.y));
+  c = mix(c, vec3(0.32, 0.30, 0.27), uGhost * (1.0 - smoothstep(0.010, 0.020, edge)));
+  c *= uBright;
   c = mix(c, vec3(0.055, 0.048, 0.038), uFog);
   gl_FragColor = vec4(c, 1.0);
 }`;
@@ -123,6 +133,7 @@ function createWorld() {
   texLoader.setCrossOrigin('anonymous');
   const maxAniso = Math.min(4, renderer.capabilities.getMaxAnisotropy());
   const textures = new Map();
+  const EMPTY = { t: null, crop: null, done: true };
   const raycaster = new THREE.Raycaster();
   const ndc = new THREE.Vector2();
   const v = new THREE.Vector3(), vp = new THREE.Vector3(), mtx = new THREE.Matrix4();
@@ -209,24 +220,25 @@ function createWorld() {
     plates.forEach((p) => { globe.remove(p.m); p.m.material.dispose(); globe.remove(p.sh); p.sh.material.dispose(); });
     plates = [];
     const n = items.length;
-    if (!n) { meshes = []; return; }
-    const N = plateCount(n);   // ~160 plates fill the shell
+    const ghost = !n && mainCity === MY; // an empty My Sphere: a globe of bare frames
+    if (!n && !ghost) { meshes = []; return; }
+    const N = ghost ? GHOST_N : plateCount(n);   // ~160 plates fill the shell
     const size = plateSize(N); // about half the surface covered
-    const dishes = spreadDishes(N, n);
+    const dishes = ghost ? new Array(N).fill(-1) : spreadDishes(N, n);
     for (let i = 0; i < N; i++) {
       const y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
       const rad = RAD * (.97 + hash(i, 7, 1) * .06); // a tight shell keeps the outline round
       const mat = new THREE.ShaderMaterial({
         uniforms: {
           uMap: { value: blank }, uCrop: { value: new THREE.Vector4(0, 0, 1, 1) },
-          uHas: { value: 0 }, uBright: { value: 0 }, uFog: { value: 0 }, uSpeed: { value: 0 }, uBack: { value: .5 },
+          uHas: { value: 0 }, uBright: { value: 0 }, uFog: { value: 0 }, uSpeed: { value: 0 }, uBack: { value: .5 }, uGhost: { value: ghost ? 1 : 0 },
         },
         vertexShader: VS, fragmentShader: FS, side: THREE.DoubleSide,
       });
       const m = new THREE.Mesh(geo, mat);
       const dish = dishes[i];
       const p = {
-        m, dish, tex: texFor(items[dish]), has: 0, bright: 0, lift: 0, rect: null,
+        m, dish, tex: ghost ? EMPTY : texFor(items[dish]), has: 0, bright: 0, lift: 0, rect: null,
         base: new THREE.Vector3(Math.cos(th) * r * rad, y * rad, Math.sin(th) * r * rad),
         size: size * (.85 + hash(i, 3, 2) * .3),
         delay: hash(i, 5, 3),
@@ -276,14 +288,16 @@ function createWorld() {
   // the same globe recipe as the main one, so every city looks alike in the ring
   const plateCount = (n) => (n >= 160 ? Math.min(n, 240) : clamp(n * 4, 48, 160));
   const plateSize = (N) => RAD * .37 * Math.sqrt(40 / N) * (innerWidth < innerHeight * .8 ? 1.08 : 1);
+  const GHOST_N = 48;
 
   // another city's globe in the ring: laid flat on the sphere, slowly turning
   function setMini(key, list) {
     const old = minis.get(key);
     if (old) { scene.remove(old.group); old.plates.forEach((p) => p.m.material.dispose()); }
-    if (!list.length) { minis.delete(key); return; }
+    const ghost = !list.length && key === MY;
+    if (!list.length && !ghost) { minis.delete(key); return; }
     const group = new THREE.Group();
-    const N = plateCount(list.length), dishes = spreadDishes(N, list.length), size = plateSize(N);
+    const N = ghost ? GHOST_N : plateCount(list.length), dishes = ghost ? [] : spreadDishes(N, list.length), size = plateSize(N);
     const plates = [];
     for (let i = 0; i < N; i++) {
       const y = 1 - 2 * (i + .5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
@@ -292,7 +306,7 @@ function createWorld() {
       const mat = new THREE.ShaderMaterial({
         uniforms: {
           uMap: { value: blank }, uCrop: { value: new THREE.Vector4(0, 0, 1, 1) },
-          uHas: { value: 0 }, uBright: { value: 0 }, uFog: { value: 0 }, uSpeed: { value: 0 }, uBack: { value: .4 },
+          uHas: { value: 0 }, uBright: { value: 0 }, uFog: { value: 0 }, uSpeed: { value: 0 }, uBack: { value: .4 }, uGhost: { value: ghost ? 1 : 0 },
         },
         vertexShader: VS, fragmentShader: FS, side: THREE.DoubleSide,
       });
@@ -303,7 +317,7 @@ function createWorld() {
       m.scale.setScalar(size * (.85 + hash(i, 3, 2) * .3));
       m.userData.city = key;
       group.add(m);
-      plates.push({ m, tex: texFor(list[dishes[i]]), has: 0 });
+      plates.push({ m, tex: ghost ? EMPTY : texFor(list[dishes[i]]), has: 0 });
     }
     group.rotation.set(.22, hash(key.length, key.charCodeAt(0), 1) * 6.28, 0);
     group.visible = false;
@@ -320,7 +334,7 @@ function createWorld() {
   }
   function setLabels() {
     ensureLabels();
-    labels.innerHTML = ring.keys.map((k) => `<span>${esc(cityName(k))}</span>`).join('');
+    labels.innerHTML = ring.keys.map((k) => `<span>${esc(nameOf(k))}</span>`).join('');
   }
 
   function animateRing(to, dur) {
@@ -513,7 +527,8 @@ function createWorld() {
     ndc.set(clientX / W * 2 - 1, -(clientY / H) * 2 + 1);
     raycaster.setFromCamera(ndc, camera);
     const hit = raycaster.intersectObjects(meshes, false)[0];
-    return hit ? hit.object.userData.plate : null;
+    const p = hit ? hit.object.userData.plate : null;
+    return p && p.dish >= 0 ? p : null;
   }
 
   const poke = () => { idleAt = performance.now(); };
@@ -717,10 +732,46 @@ function plateMarkup(d) {
       <p class="rv-rest" style="--i:1">${esc(d.restaurant)}</p>
       ${d.description ? `<p class="rv-desc" style="--i:2">${esc(d.description)}</p>` : ''}
       ${d.photographer ? `<p class="rv-credit" style="--i:3">Photograph · ${esc(d.photographer)}</p>` : ''}
-      ${d.link ? `<a class="rv-link" style="--i:4" href="${esc(d.link)}" rel="noopener" target="_blank">${esc(linkLabel(d.link))} ↗</a>` : ''}
+      <div class="rv-actions" style="--i:4">
+        ${d.link ? `<a class="rv-link" href="${esc(d.link)}" rel="noopener" target="_blank">${esc(linkLabel(d.link))} ↗</a>` : ''}
+        ${saveButton(d)}
+      </div>
     </div>
   </div>`;
 }
+
+/* ---------- saving a plate to My Sphere ---------- */
+// a small plate: an outline when it isn't kept, filled when it is
+function saveButton(d) {
+  const on = mine.has(d.id);
+  return `<button type="button" class="rv-save${on ? ' is-on' : ''}" data-id="${esc(d.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove from My Sphere' : 'Save to My Sphere'}" title="${on ? 'In My Sphere' : 'Save to My Sphere'}">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle class="s-ring" cx="10" cy="10" r="8.5"/><circle class="s-fill" cx="10" cy="10" r="5"/></svg>
+    <span class="rv-save-note" aria-hidden="true"></span>
+  </button>`;
+}
+function syncSave() {
+  const b = rvBody.querySelector('.rv-save');
+  if (!b) return;
+  const on = mine.has(b.dataset.id);
+  b.classList.toggle('is-on', on);
+  b.setAttribute('aria-pressed', String(on));
+  b.setAttribute('aria-label', on ? 'Remove from My Sphere' : 'Save to My Sphere');
+  b.title = on ? 'In My Sphere' : 'Save to My Sphere';
+}
+let sphereDirty = false;
+rvBody.addEventListener('click', async (e) => {
+  const b = e.target.closest('.rv-save');
+  if (!b) return;
+  const d = items.find((x) => x.id === b.dataset.id);
+  if (!d) return;
+  const on = await mine.toggle(d);
+  if (city === MY) sphereDirty = true;
+  const note = b.querySelector('.rv-save-note');
+  note.textContent = on ? 'Saved to My Sphere' : 'Removed';
+  b.classList.remove('is-noted'); void b.offsetWidth; b.classList.add('is-noted');
+  if (on) { b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop'); }
+});
+mine.onChange(() => { syncSave(); updateNote(); });
 
 function paint(i, from) {
   const d = items[i];
@@ -749,7 +800,7 @@ function openPlate(i, { from = null, push = true } = {}) {
   rv.scrollTop = 0;
   paint(i, wasOpen ? null : from);
   requestAnimationFrame(() => rv.classList.add('is-open'));
-  const url = dishPath(items[i]);
+  const url = city === MY ? `/${MY}/?plate=${encodeURIComponent(items[i].slug)}` : dishPath(items[i]);
   if (!wasOpen && push) { history.pushState({ plate: items[i].slug }, '', url); rvState.pushed = true; }
   else history.replaceState({ plate: items[i].slug }, '', url);
   cursor.classList.remove('is-on');
@@ -767,6 +818,20 @@ function hidePlate() {
   world?.resume();
   setTimeout(() => { if (rv.classList.contains('is-closing')) { rv.hidden = true; rv.classList.remove('is-closing'); rvBody.innerHTML = ''; } }, 520);
   rvState.i = -1;
+  if (sphereDirty && city === MY) refreshSphere();
+}
+
+// My Sphere changed while you were in it: rebuild its globe from the saved plates
+async function refreshSphere() {
+  sphereDirty = false;
+  const list = await mine.list().catch(() => null);
+  if (!list || city !== MY) return;
+  const sig = (a) => a.map((d) => d.id).join('|');
+  if (sig(list) === sig(items)) return;
+  items = list;
+  renderIndex();
+  world?.refresh();
+  updateNote();
 }
 
 function closePlate() {
@@ -809,7 +874,7 @@ rv.addEventListener('touchend', () => {
 addEventListener('popstate', (e) => {
   if (FRONT && location.pathname === '/') { location.reload(); return; } // back to the front door
   const pc = location.pathname.split('/')[1];
-  if (world && pc && pc !== city && CONFIG.CITIES[pc]) { switchInstant(pc, e.state?.plate); return; }
+  if (world && pc && pc !== city && (CONFIG.CITIES[pc] || pc === MY)) { switchInstant(pc, e.state?.plate); return; }
   const slug = e.state?.plate;
   const i = slug ? items.findIndex((d) => d.slug === slug) : -1;
   if (i >= 0) { openPlate(i, { push: false }); return; }
@@ -834,9 +899,10 @@ const cityItems = new Map();
 let switching = false;
 
 function ringCities() {
-  return Object.keys(CONFIG.CITIES).filter((k) => CONFIG.CITIES[k].live || k === city || k === mainCity);
+  return [...Object.keys(CONFIG.CITIES).filter((k) => CONFIG.CITIES[k].live || k === city || k === mainCity), MY];
 }
 async function itemsFor(k) {
+  if (k === MY) return mine.list().catch(() => []);
   if (k === mainCity && items.length) return items;
   if (!cityItems.has(k)) cityItems.set(k, fetchAll(k).catch(() => []));
   return cityItems.get(k);
@@ -847,6 +913,8 @@ function applyCity(k, list, push) {
   const name = cityName(k);
   city = k; items = list;
   root.classList.remove('is-front');
+  root.classList.toggle('is-my', k === MY);
+  if (k === MY) { applyMine(push); return; }
   root.dataset.city = k; root.dataset.home = `/${k}/`;
   HOME_PATH = `/${k}/`;
   HOME_TITLE = document.title = `${name} Plated — Beautiful food. Made in ${name}.`;
@@ -856,8 +924,68 @@ function applyCity(k, list, push) {
   const canon = document.querySelector('link[rel="canonical"]'); if (canon) canon.href = `${CONFIG.SITE_URL}/${k}/`;
   const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = `${name} Plated — beautiful food, made in ${name}`;
   const lede = document.querySelector('.ix-lede'); if (lede) lede.textContent = `A visual journal of the dishes, details and delicious things that make ${name} worth looking at.`;
+  setNoindex(false);
   renderIndex();
+  updateNote();
   if (push) history.pushState({ city: k }, '', HOME_PATH);
+}
+
+// the page becomes My Sphere
+function applyMine(push) {
+  root.dataset.city = MY; root.dataset.home = `/${MY}/`;
+  HOME_PATH = `/${MY}/`;
+  HOME_TITLE = document.title = 'My Sphere — Plated';
+  const mark = document.querySelector('.hud-top .mark');
+  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', 'My Sphere — Plated'); mark.innerHTML = 'MY<b>SPHERE</b>'; }
+  const canon = document.querySelector('link[rel="canonical"]'); if (canon) canon.href = `${CONFIG.SITE_URL}/${MY}/`;
+  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = 'My Sphere — the plates you saved';
+  const lede = document.querySelector('.ix-lede'); if (lede) lede.textContent = 'The plates you saved, from every city.';
+  setNoindex(true);
+  renderIndex();
+  updateNote();
+  if (push) history.pushState({ city: MY }, '', HOME_PATH);
+}
+
+function setNoindex(on) {
+  let m = document.querySelector('meta[name="robots"]');
+  if (on && !m) { m = document.createElement('meta'); m.name = 'robots'; m.content = 'noindex'; document.head.appendChild(m); }
+  else if (!on && m && m.dataset.mine) m.remove();
+  if (m && on) m.dataset.mine = '1';
+}
+
+/* ---------- My Sphere: the account link, the empty state and a quiet nudge ---------- */
+const acctLink = (() => {
+  const nav = document.querySelector('.hud-top .nav');
+  if (!nav) return null;
+  const a = document.createElement('a');
+  a.href = '#account'; a.className = 'nav-acct';
+  a.innerHTML = '<i>01</i><span>Sign in</span>';
+  nav.insertBefore(a, nav.firstChild);
+  a.addEventListener('click', (e) => { e.preventDefault(); mine.openPanel(); });
+  return a;
+})();
+const note = document.createElement('div');
+note.className = 'my-note';
+note.setAttribute('role', 'status');
+document.body.appendChild(note);
+note.addEventListener('click', (e) => {
+  if (e.target.closest('[data-act="in"]')) { e.preventDefault(); mine.openPanel(); }
+  else if (e.target.closest('[data-act="x"]')) mine.dismissNudge();
+});
+
+function updateNote() {
+  if (acctLink) {
+    acctLink.hidden = !(ACCOUNTS || mine.user);
+    acctLink.querySelector('span').textContent = mine.user ? 'Account' : 'Sign in';
+  }
+  let html = '';
+  if (city === MY && !items.length) {
+    html = '<p>Your sphere is empty. Tap <svg viewBox="0 0 20 20" aria-label="the small circle"><circle cx="10" cy="10" r="8.5"/></svg> on any plate to keep it here.</p>';
+  } else if (city === MY && ACCOUNTS && !mine.user && mine.count() >= 3 && !mine.nudgeOff()) {
+    html = '<p>Saved on this device. <a href="#account" data-act="in">Sign in</a> to keep it everywhere.</p><button type="button" data-act="x" aria-label="Dismiss">×</button>';
+  }
+  if (note.innerHTML !== html) note.innerHTML = html;
+  note.classList.toggle('is-on', !!html);
 }
 
 async function openCities(dur) {
@@ -880,7 +1008,7 @@ async function chooseCity(i) {
     await world.focusCity(i);
     if (k !== city) {
       const list = await itemsFor(k);
-      if (list.length) {
+      if (list.length || k === MY) {
         if (k !== mainCity) cityItems.set(mainCity, Promise.resolve(items));
         applyCity(k, list, true);
         if (k !== mainCity) { mainCity = k; world.swapMain(i); }
@@ -894,7 +1022,7 @@ async function chooseCity(i) {
 // back / forward between cities: swap without the ring
 async function switchInstant(k, plate) {
   const list = await itemsFor(k);
-  if (!list.length) { location.reload(); return; }
+  if (!list.length && k !== MY) { location.reload(); return; }
   if (!rv.hidden) hidePlate();
   cityItems.set(mainCity, Promise.resolve(items));
   ringKeys = ringCities(); if (!ringKeys.includes(k)) ringKeys.push(k);
@@ -933,6 +1061,8 @@ function goStatic() {
 }
 
 async function boot() {
+  const signin = mine.init();
+  if (city === MY) { bootMine(signin); return; }
   if (FRONT) {
     // plated.gallery: the front city's photos make the first globe on the ring
     try { items = await fetchAll(FRONT); } catch (e) { console.error(e); }
@@ -971,6 +1101,23 @@ async function boot() {
     renderIndex();
     world?.refresh();
   }).catch((e) => console.error(e));
+}
+
+// plated.gallery/my/: no loader, straight into your sphere (or its empty frames)
+async function bootMine(signin) {
+  await signin;
+  items = await mine.list().catch(() => []);
+  applyMine(false);
+  if (reduced) { goStatic(); return; }
+  try { world = createWorld(); } catch (e) { console.warn('WebGL unavailable', e); goStatic(); return; }
+  bindInput();
+  world.start();
+  root.classList.add('is-skip');
+  enter();
+  const want = new URLSearchParams(location.search).get('plate');
+  if (want) { const i = items.findIndex((d) => d.slug === want); if (i >= 0) openPlate(i, { push: false }); }
+  // a sign-in that finishes later (Google, an emailed link) brings the account's plates in
+  mine.onChange(() => { if (city === MY && rv.hidden) refreshSphere(); });
 }
 
 function startLoader() {
