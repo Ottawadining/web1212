@@ -14,7 +14,7 @@ export default {
   SUPABASE_URL: 'https://sxqogesrijgbvdqgqzti.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_MWvsjF5YKAR7wVGd30uShQ_gpRVw05T',
   PAGE_SIZE: 18,
-  // My Sphere accounts (optional: saving works without them). Switch a method on once it is set up
+  // Collection accounts (optional: saving works without them). Switch a method on once it is set up
   // in Supabase -> Authentication. With both off, visitors still save plates on their own device.
   SIGN_IN: { google: true, email: false },
   CITIES: {
