@@ -8,6 +8,7 @@ const CITIES = {
   toronto: { name: 'Toronto', base: 'https://plated.gallery/toronto' },
   montreal: { name: 'Montréal', base: 'https://plated.gallery/montreal' },
   'new-york': { name: 'New York', base: 'https://plated.gallery/new-york' },
+  vancouver: { name: 'Vancouver', base: 'https://plated.gallery/vancouver' },
 };
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
