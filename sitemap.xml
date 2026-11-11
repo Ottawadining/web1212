@@ -1336,4 +1336,13 @@
     <priority>0.7</priority>
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/18e46703-76aa-4601-9b72-ccaafe8dcfb5-1600.webp</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/submit.html</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
