@@ -1472,6 +1472,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/vancouver/dish/sablefish-bao-bei-chinese-brasserie.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/57875f36-22bf-4ded-ac17-84b5e537a86c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/vancouver/dish/magret-duck-ballotine-st-lawrence.html</loc>
     <lastmod>2026-11-12</lastmod>
     <priority>0.7</priority>
