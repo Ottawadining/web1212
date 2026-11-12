@@ -6,12 +6,54 @@
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/drunk-noodles-next.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ff680f5f-8215-4a4d-b36a-a6cee49bbc72-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/winter-radish-salad-aperitivo.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/11138268-ec6b-40c1-b16f-aaa184e149bf-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/watercress-salad-buvette-daphnee.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/25e36803-2928-48f1-9726-cb5a5d11bcda-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/halloumi-salad-the-wellington-gastropub.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/340e57c0-4445-407a-b59f-3225ed654102-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/hamachi-crudo-the-belmont.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f5f39bc5-2fc7-4318-afc8-5bc36162ffdd-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/seared-duck-breast-starling.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/909e035a-43ed-42ef-8bfe-b06b85ca54ce-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/slow-cooked-lamb-ragu-ratatouille.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0d404506-a13e-4b44-8710-a5c72d0600af-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/dish/maiz-raphael.html</loc>
@@ -1061,6 +1103,90 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/new-york/dish/roasted-sweetbread-bridges.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d2158a7c-d23f-480c-8534-a9ff603d5ea3-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/bluefin-tuna-sunn-s.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/5d774c20-866c-4ff2-a731-cb23fd96b7c2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/poached-bobo-chicken-lei.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9cc1f37a-570c-43ab-ba53-1d53a4781345-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/prawn-recheado-adda.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2b3998e8-fe5a-4bd1-bd5b-dec8d8a85ac7-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/fried-cod-cheeks-crevette.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/5cc935bb-cc6c-4422-a335-41a331a92d77-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/smoked-pork-ribs-gramercy-tavern.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0ba1653b-dece-4f07-a373-e2c5971c5703-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/carosello-cucumbers-misi.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/13485b0a-40f3-4c36-8ba2-6ec94e8fff03-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/rhode-island-fluke-quique-crudo.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/73072b56-dc33-4e83-9317-e88f2b123720-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/tuna-osakana.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e01d32d1-1684-4ac2-8bff-a25db1df0593-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/seared-tokyo-turnips-margot.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ba0efd0f-8a04-4503-9c1f-294e6635950d-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/bluefin-tuna-tartare-chez-fifi.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1f5d70e8-cf6a-42ce-9a15-18d2671647ca-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/escargots-le-crocodile.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4b94eadb-edbf-4e24-97a0-8b74cbdb3493-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/cod-collars-theodora.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4cf772c5-7239-4a48-8a52-22a0cea7a72f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/new-york/dish/uni-toast-manuela.html</loc>
+    <lastmod>2026-11-11</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b9fdd856-3b8a-4e45-a1fa-0e8a764c0468-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/new-york/dish/petits-farcis-zimmi-s.html</loc>
     <lastmod>2026-11-11</lastmod>
     <priority>0.7</priority>
@@ -1338,11 +1464,83 @@
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/magret-duck-ballotine-st-lawrence.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ae44caf1-8ef3-4311-8315-75dac6985388-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/grilled-romanesco-kissa-tanto.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/7424cc4d-c394-4334-a3a6-1f72cb11a11d-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/olive-oil-poached-halibut-botanist-dining.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/47890b8c-8979-483e-8888-105ee4e55294-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/carrot-cake-l-abbatoir.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/cf2f3ae8-f7fa-4c47-859f-11a162cd44d6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/stuffed-squab-breast-burdock-and-co.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/47cff3e2-73de-468c-8e7c-6e2eced69ed2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/rose-ice-cream-vij-s.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/91a02e8c-ffe0-4f93-9a3e-67d1791fa537-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/hunter-s-chicken-published-on-main.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/442080de-8ecd-4c89-a278-f35d7ba12492-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/cappalletti-osteria-savio-volpe.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9ff213bb-969c-4825-afb1-9e405f7cb669-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/pork-secreto-annalena.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e54c6546-a317-43fc-9657-529dc892d2a8-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/yellowfin-tuna-carpaccio-hawksworth-restaurant.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/da02ca30-46f6-4acb-a3b2-1de30918a50c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/strawberry-basil-tart-miku-restaurant.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/04c2e02c-3ef5-4bc7-85f6-0ac58f1494bd-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/yukon-arctic-char-blue-water-cafe.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/5c170349-fd00-4458-b315-94702531cc6d-1600.webp</image:loc></image:image>
   </url>
 </urlset>
