@@ -1464,12 +1464,48 @@
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/lemongrass-chicken-curry-anh-and-chi.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/98e478c2-754d-476e-b0b1-b061b46fb2d6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/octopus-good-thief.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/3cac8dcf-a449-4398-8cd8-713375541e7e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/argentinean-shrimp-gary-s.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8548cc5f-2bf7-4532-922a-dd8273894cda-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/tempura-eggplant-farmer-s-apprentice.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ec5719b0-1359-4463-afa5-ccfc1d8661b2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/samosa-chaat-karma-indian-bistro.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2dc82ff6-406d-4eb5-8cc1-a15b6f22dccc-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/tuna-sushi-hyun.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/73501e01-ae8f-46f7-9ce4-c88de25b0f83-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/dish/bluefin-tina-tiradito-suyo-modern-peruvian.html</loc>
