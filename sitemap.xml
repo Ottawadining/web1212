@@ -1472,6 +1472,18 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/vancouver/dish/sashimi-box-octopus-garden.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fde746f2-d31c-4741-aada-95c5f470ed52-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/soft-shell-crab-song.html</loc>
+    <lastmod>2026-11-14</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e05677c3-3dd8-4f69-8a28-8498ced735b9-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/vancouver/dish/lemongrass-chicken-curry-anh-and-chi.html</loc>
     <lastmod>2026-11-14</lastmod>
     <priority>0.7</priority>
