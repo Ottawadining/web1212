@@ -1768,4 +1768,40 @@
     <loc>https://plated.gallery/paris/submit.html</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/carotte-rock-cafe-les-deux-gares.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/db7321fc-5b20-4440-b22c-7a596b051052-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/salade-de-lentilles-baca-v.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/3a788a7e-6fa1-49b7-90b9-02ee91e270c8-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/royal-de-foie-gras-aux-bons-crus.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b093428c-7f38-46cd-9681-4151cb82573a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/tomate-pochee-automne.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a7bdb1ad-0690-4539-af61-a993158281a7-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/cochon-au-bbq-au-passage.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e8ea18f9-ab6b-4871-8122-ce99fa103c07-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/gaspacho-de-carrotes-a-la-biche-au-bois.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b2a4dea9-dd2c-4cb3-8d78-c30497450f8f-1600.webp</image:loc></image:image>
+  </url>
 </urlset>
