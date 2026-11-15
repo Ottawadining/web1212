@@ -1464,12 +1464,84 @@
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-15</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/steelhead-trout-the-mackenzie-room.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8705b7fa-e12f-401f-9ff9-4d8d9c1b1ea1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/pork-belly-en-adobo-norteno-ophelia-mexican-kitchen.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/23ddd7e8-9ad2-4432-9e2d-f29ba3a56915-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/pad-thai-jay-nok-modern-thai.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/38fb3271-d780-468f-bdf9-9a6fe63a80bf-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/abalone-chang-an-restaurant.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1a902e1d-fc69-4945-926c-0f53207657f3-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/mackerel-relyeno-bravo-vancouver.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/621efaf6-4a4e-4975-8e49-97272de6eb56-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/burrata-and-heirloom-tomatoes-carlino-restaurant.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/c186990e-e654-43d0-94f0-d8a6b11cfff0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/lobster-and-caviar-sushi-jin.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/6dd2d3ce-b441-4870-add3-a6ac9155e657-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/crispy-turmeric-dill-and-smoked-trout-fish-cake-delara-restaurant.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/942e4ba9-6003-47c9-a68f-ba00206a6a99-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/sablefish-elem.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/6833e469-da0a-45fc-b3ef-aea2f150192d-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/winter-squash-folke.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fbf00ea4-3516-426c-b789-7d8a79ca5fb0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/polpo-alla-griglia-acquafarina.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d0dbc29d-fc35-44ea-bfe6-25dc32cedbc0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/vancouver/dish/yellowfin-tuna-tartare-nammos-estiatorio.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/83022688-413e-41fd-8cd2-a96e494b7e7a-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/vancouver/dish/sashimi-box-octopus-garden.html</loc>
