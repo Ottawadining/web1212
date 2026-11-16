@@ -1761,12 +1761,36 @@
   </url>
   <url>
     <loc>https://plated.gallery/paris/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/paris/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/creme-brulee-grande-brasserie.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/63a0b20f-ee99-4e45-84f7-01b66bebb1b1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/bar-roti-comice.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b6e11734-7974-414d-9a94-4ce570ff7b7b-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/terrine-de-foie-gras-chez-georges.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f9b681e7-b6f9-492c-b52e-b8ca22aa9949-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/carpaccio-de-dorade-josephine-chez-dumonet.html</loc>
+    <lastmod>2026-11-15</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/3e3bdb33-3bbb-48b0-af4a-e89bd3d5f7d0-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/paris/dish/carotte-rock-cafe-les-deux-gares.html</loc>
