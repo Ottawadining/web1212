@@ -6,12 +6,18 @@
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/ottawa/dish/chinook-salmon-beckta.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d829ac87-8237-4e89-bbbf-1953137d5ebf-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/ottawa/dish/drunk-noodles-next.html</loc>
@@ -1767,6 +1773,90 @@
   <url>
     <loc>https://plated.gallery/paris/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/maigre-verjus.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8130cfac-c84b-4706-9dc4-8b2473962b2b-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/glazed-cabbage-septime.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d7bab30c-60e3-4676-8d8d-2d9a4c52186b-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/sashimi-de-thon-rouge-recoin.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fcc62afb-97bd-45fc-b175-00c01b5b85a6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/selle-d-agneau-parcelles.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/918ce821-eb85-4061-8607-42e9da24ec5f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/blackberries-and-black-currants-le-cinq.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/67a2b570-282a-4300-ba07-63ded71544e2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/maquereau-marine-and-brule-le-saint-sebastien.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4b2ef15d-a763-4b11-be94-bb07d7f21b59-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/rouget-grille-le-rigmarole.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/cc4a3e7a-f987-4154-b7b2-412b4a16b6f2-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/poitrine-de-cochon-le-grand-bain.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/8bb40a09-7de8-4126-bb55-052565e80b10-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/caille-le-clarence.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/fae4ac59-4c1f-48ce-b837-57fc16de389e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/jambon-persille-le-bon-georges.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/dcc2994c-a0c8-4d37-a2dd-d0cb4eff8deb-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/asperges-l-apibo.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4ebfccab-feb0-40df-83f2-f5d4ddaeb1bf-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/seabass-taouk-kubri.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a06688d7-a285-41bb-90eb-7f012b4026be-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/thon-juveniles.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/27dcc2d6-bd7c-4911-a28e-0eb4459c0b28-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/crudo-de-thon-rouge-jones.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d7b42cac-a917-43b2-816c-57ce7f43816e-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/paris/dish/creme-brulee-grande-brasserie.html</loc>
