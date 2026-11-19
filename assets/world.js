@@ -270,20 +270,28 @@ function createWorld() {
     return out.set(Math.sin(th) * ring.Rr * ring.kx, 0, (Math.cos(th) - 1) * ring.Rr);
   }
 
+  // how far round to the front a ring slot is: 1 at the front, 0 from the sides back
+  function frontOf(i) {
+    const n = Math.max(ring.keys.length, 1);
+    return Math.max(0, Math.cos((i - ring.pos) * Math.PI * 2 / n));
+  }
+  const ringGrow = (i) => 1 + .85 * Math.pow(frontOf(i), 3);   // the globe in front is larger
+  const ringLight = (i) => .14 + .86 * Math.pow(frontOf(i), 2); // the rest sink into the dark, to be discovered
+
   function ringPose() {
     // the camera sits above and in front of the ring, looking down at it a little,
     // so the globes behind show above the one at the front
-    const n = Math.max(ring.keys.length, 1), r = RAD * SM, el = camera.aspect < .8 ? .85 : .45; // a phone looks down more, using its height
+    const n = Math.max(ring.keys.length, 1), r = RAD * SM, el = .45;
     ring.Rr = RAD * Math.max(1.25, n * .42);
-    // on a phone held upright the ring is squeezed sideways into an oval, so the globes stay a good size
-    ring.kx = camera.aspect < .8 ? clamp(.3 + camera.aspect * .3, .4, .55) : 1;
+    ring.kx = 1; // a true circle (an oval on phones made the globes bigger but lost the ring's shape)
     ring.tgt.set(0, r * .2, -ring.Rr * .55);
     let spread = 0; // how far sideways the globes reach (none with two cities: one in front, one behind)
     for (let i = 0; i < n; i++) spread = Math.max(spread, Math.abs(Math.sin(i * Math.PI * 2 / n)));
     // room for the names under the side globes too (they are wider than the globes on a phone)
-    const halfW = ring.Rr * ring.kx * spread + r * (camera.aspect < .8 ? 2.4 : 1.6);
+    // on a phone the side globes may run off the edge, half hidden, so the ones in view stay a good size
+    const halfW = camera.aspect < .8 ? ring.Rr * spread * .82 : ring.Rr * spread + r * 1.6;
     const dW = halfW / (tanHalf * camera.aspect);
-    const dH = (r * 2.6 + ring.Rr * Math.sin(el) * 1.1) / tanHalf * .8;
+    const dH = (r * 3.4 + ring.Rr * Math.sin(el) * 1.1) / tanHalf * .8;
     const D = Math.max(dW, dH, RAD * 2);
     ring.cam.set(0, Math.sin(el) * D, Math.cos(el) * D).add(ring.tgt);
   }
@@ -402,7 +410,8 @@ function createWorld() {
 
     globe.rotation.set(rot.x, rot.y - (1 - e) * 1.6, 0);
     const gs = .55 + .45 * e;
-    globe.scale.setScalar(gs * Math.pow(SM / gs, mm));
+    globe.scale.setScalar(gs * Math.pow(SM / gs, mm) * (1 + (ringGrow(ring.cur) - 1) * mm));
+    const ringDim = 1 - mm * (1 - ringLight(ring.cur));
     if (mm > 0) slotPos(ring.cur, slotV).multiplyScalar(mm); else slotV.set(0, 0, 0);
     globe.position.copy(slotV);
     cityCam.set(0, 0, dist * (1 + (1 - e) * .9));
@@ -461,7 +470,7 @@ function createWorld() {
       toCam.copy(camera.position).sub(v).normalize();
       const facing = nW.dot(toCam);
       const shade = facing > 0 ? .55 + .45 * smooth(.05, .8, facing) : 1;
-      u.uBright.value = p.bright * pe * (shade + (1 - shade) * inside);
+      u.uBright.value = p.bright * pe * (shade + (1 - shade) * inside) * ringDim;
       p.sh.material.uniforms.uOpacity.value = .62 * pe * (1 - inside) * smooth(0, .35, facing);
       u.uHas.value = p.has;
       u.uFog.value = smooth(-RAD * .25, RAD * 1.05, (zv - cz) / globe.scale.x) * fogAmt;
@@ -485,7 +494,8 @@ function createWorld() {
         mini.group.visible = vis > .004;
         if (!mini.group.visible) continue;
         slotPos(i, mini.group.position);
-        mini.group.scale.setScalar(SM * (.7 + .3 * mm));
+        mini.group.scale.setScalar(SM * (.7 + .3 * mm) * ringGrow(i));
+        const light = ringLight(i);
         mini.group.rotation.y += dt * .12;
         const back = smooth(0, ring.Rr * 2, -mini.group.position.z); // further round the ring = dimmer
         // the same life as the city's own globe: plates breathe and turn to stay upright as it spins,
@@ -514,8 +524,8 @@ function createWorld() {
           if (p.tex.t && u.uMap.value !== p.tex.t) { u.uMap.value = p.tex.t; u.uCrop.value.copy(p.tex.crop); }
           p.has += ((p.tex.t ? 1 : 0) - p.has) * .08;
           u.uHas.value = p.has;
-          u.uBright.value = .92 * vis * (1 - back * .35) * shade;
-          u.uFog.value = back * .45;
+          u.uBright.value = .92 * vis * light * shade;
+          u.uFog.value = (1 - light) * .6;
         }
       }
     }
@@ -529,12 +539,12 @@ function createWorld() {
         [...labels.children].forEach((el, i) => {
           slotPos(i, v);
           const depth = -v.clone().applyMatrix4(camera.matrixWorldInverse).z;
-          vp.copy(v).addScaledVector(upW, r);
+          vp.copy(v).addScaledVector(upW, r * ringGrow(i));
           v.project(camera); vp.project(camera);
           const cx = (v.x + 1) / 2 * W, cy = (1 - v.y) / 2 * H, rad = Math.abs((1 - vp.y) / 2 * H - cy);
           const front = smooth(-1, 1, Math.cos((i - ring.pos) * Math.PI * 2 / Math.max(ring.keys.length, 1)));
           el.style.transform = `translate3d(${cx.toFixed(1)}px, ${(cy + rad * 1.12 + 4).toFixed(1)}px, 0) translateX(-50%)`;
-          el.style.opacity = String(.35 + .65 * front);
+          el.style.opacity = String(.12 + .88 * ringLight(i));
           el.style.zIndex = String(Math.round(10000 - depth));
         });
       }
