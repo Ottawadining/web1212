@@ -150,7 +150,7 @@ function createWorld() {
 
   // ---- the city ring: every open city as a small globe on a carousel ----
   const SM = .3;                       // a city globe's size in the ring, relative to the full globe
-  const ring = { keys: [], cur: 0, pos: 0, posT: 0, Rr: RAD * 1.25, cam: new THREE.Vector3(), tgt: new THREE.Vector3(), waits: [] };
+  const ring = { keys: [], cur: 0, pos: 0, posT: 0, Rr: RAD * 1.25, kx: 1, cam: new THREE.Vector3(), tgt: new THREE.Vector3(), waits: [] };
   const anim = { from: 0, to: 0, t0: 0, dur: 1, done: null };   // 0 = inside a city, 1 = the ring
   let mm = 0;                          // eased ring amount, this frame
   const minis = new Map();             // city -> { group, plates, alpha, alphaT, meshes }
@@ -267,19 +267,21 @@ function createWorld() {
   /* ----- the ring ----- */
   function slotPos(i, out) {
     const n = Math.max(ring.keys.length, 1), th = (i - ring.pos) * Math.PI * 2 / n;
-    return out.set(Math.sin(th) * ring.Rr, 0, (Math.cos(th) - 1) * ring.Rr);
+    return out.set(Math.sin(th) * ring.Rr * ring.kx, 0, (Math.cos(th) - 1) * ring.Rr);
   }
 
   function ringPose() {
     // the camera sits above and in front of the ring, looking down at it a little,
     // so the globes behind show above the one at the front
-    const n = Math.max(ring.keys.length, 1), r = RAD * SM, el = .45;
+    const n = Math.max(ring.keys.length, 1), r = RAD * SM, el = camera.aspect < .8 ? .85 : .45; // a phone looks down more, using its height
     ring.Rr = RAD * Math.max(1.25, n * .42);
+    // on a phone held upright the ring is squeezed sideways into an oval, so the globes stay a good size
+    ring.kx = camera.aspect < .8 ? clamp(.3 + camera.aspect * .3, .4, .55) : 1;
     ring.tgt.set(0, r * .2, -ring.Rr * .55);
     let spread = 0; // how far sideways the globes reach (none with two cities: one in front, one behind)
     for (let i = 0; i < n; i++) spread = Math.max(spread, Math.abs(Math.sin(i * Math.PI * 2 / n)));
     // room for the names under the side globes too (they are wider than the globes on a phone)
-    const halfW = ring.Rr * spread + r * (camera.aspect < .8 ? 2.6 : 1.6);
+    const halfW = ring.Rr * ring.kx * spread + r * (camera.aspect < .8 ? 2.4 : 1.6);
     const dW = halfW / (tanHalf * camera.aspect);
     const dH = (r * 2.6 + ring.Rr * Math.sin(el) * 1.1) / tanHalf * .8;
     const D = Math.max(dW, dH, RAD * 2);
@@ -318,7 +320,7 @@ function createWorld() {
       m.scale.setScalar(size * (.85 + hash(i, 3, 2) * .3));
       m.userData.city = key;
       group.add(m);
-      plates.push({ m, tex: ghost ? EMPTY : texFor(list[dishes[i]]), has: 0 });
+      plates.push({ m, base: pos.clone(), bob: hash(i, 5, 3) * 6.28, tex: ghost ? EMPTY : texFor(list[dishes[i]]), has: 0 });
     }
     group.rotation.set(.22, hash(key.length, key.charCodeAt(0), 1) * 6.28, 0);
     group.visible = false;
@@ -486,6 +488,21 @@ function createWorld() {
         mini.group.scale.setScalar(SM * (.7 + .3 * mm));
         mini.group.rotation.y += dt * .12;
         const back = smooth(0, ring.Rr * 2, -mini.group.position.z); // further round the ring = dimmer
+        // the same life as the city's own globe: plates breathe and turn to stay upright as it spins,
+        // which is what makes a globe twinkle in the ring
+        qInv.copy(mini.group.quaternion).invert();
+        for (const p of mini.plates) {
+          p.m.position.copy(p.base).multiplyScalar(1 + Math.sin(now / 1400 + p.bob) * .012);
+          nW.copy(p.base).applyQuaternion(mini.group.quaternion).normalize();
+          upW.copy(UP).addScaledVector(nW, -nW.y);
+          if (upW.lengthSq() > 1e-6) {
+            upW.normalize();
+            xW.crossVectors(upW, nW);
+            mtx.makeBasis(xW, upW, nW);
+            qW.setFromRotationMatrix(mtx);
+            p.m.quaternion.copy(qInv).multiply(qW);
+          }
+        }
         mini.group.updateMatrixWorld();
         for (const p of mini.plates) {
           p.m.getWorldPosition(v);
@@ -506,13 +523,17 @@ function createWorld() {
     if (labels) {
       labels.style.opacity = String(smooth(.75, 1, mm));
       if (mm > .004) {
+        // each name sits just under its globe on screen, however steeply the camera looks down
         const r = RAD * SM;
+        upW.set(0, 1, 0).applyQuaternion(camera.quaternion);
         [...labels.children].forEach((el, i) => {
-          slotPos(i, v); v.y -= r * 1.32;
+          slotPos(i, v);
           const depth = -v.clone().applyMatrix4(camera.matrixWorldInverse).z;
-          v.project(camera);
+          vp.copy(v).addScaledVector(upW, r);
+          v.project(camera); vp.project(camera);
+          const cx = (v.x + 1) / 2 * W, cy = (1 - v.y) / 2 * H, rad = Math.abs((1 - vp.y) / 2 * H - cy);
           const front = smooth(-1, 1, Math.cos((i - ring.pos) * Math.PI * 2 / Math.max(ring.keys.length, 1)));
-          el.style.transform = `translate3d(${((v.x + 1) / 2 * W).toFixed(1)}px, ${((1 - v.y) / 2 * H).toFixed(1)}px, 0) translateX(-50%)`;
+          el.style.transform = `translate3d(${cx.toFixed(1)}px, ${(cy + rad * 1.12 + 4).toFixed(1)}px, 0) translateX(-50%)`;
           el.style.opacity = String(.35 + .65 * front);
           el.style.zIndex = String(Math.round(10000 - depth));
         });
