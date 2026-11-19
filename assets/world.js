@@ -4,11 +4,11 @@
 // that city (the page swaps city in place). A hidden list keeps the collection crawlable.
 // Collection (/collection/) is one more globe on the ring: the plates a visitor has saved, from every city.
 import * as THREE from 'three';
-import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js?v=20261110b';
-import { mine, ACCOUNTS } from './mine.js?v=20261110b';
+import { CONFIG, fetchAll, esc, pad, linkLabel, dishPath, altText, cropAttrs, dishTitle, tileHTML, cityName } from './core.js?v=20261118a';
+import { mine, ACCOUNTS } from './mine.js?v=20261118a';
 
 const MY = 'collection';
-const nameOf = (k) => (k === MY ? 'Collection' : cityName(k));
+const nameOf = (k) => (k === MY ? 'My Collection' : cityName(k));
 
 const root = document.documentElement;
 const $ = (id) => document.getElementById(id);
@@ -278,7 +278,8 @@ function createWorld() {
     ring.tgt.set(0, r * .2, -ring.Rr * .55);
     let spread = 0; // how far sideways the globes reach (none with two cities: one in front, one behind)
     for (let i = 0; i < n; i++) spread = Math.max(spread, Math.abs(Math.sin(i * Math.PI * 2 / n)));
-    const halfW = ring.Rr * spread + r * 1.3;
+    // room for the names under the side globes too (they are wider than the globes on a phone)
+    const halfW = ring.Rr * spread + r * (camera.aspect < .8 ? 2.6 : 1.6);
     const dW = halfW / (tanHalf * camera.aspect);
     const dH = (r * 2.6 + ring.Rr * Math.sin(el) * 1.1) / tanHalf * .8;
     const D = Math.max(dW, dH, RAD * 2);
@@ -744,7 +745,7 @@ function plateMarkup(d) {
 // a small plate: an outline when it isn't kept, filled when it is
 function saveButton(d) {
   const on = mine.has(d.id);
-  return `<button type="button" class="rv-save${on ? ' is-on' : ''}" data-id="${esc(d.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove from Collection' : 'Save to Collection'}" title="${on ? 'In your Collection' : 'Save to Collection'}">
+  return `<button type="button" class="rv-save${on ? ' is-on' : ''}" data-id="${esc(d.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove from My Collection' : 'Save to My Collection'}" title="${on ? 'In My Collection' : 'Save to My Collection'}">
     <svg viewBox="0 0 20 20" aria-hidden="true"><circle class="s-ring" cx="10" cy="10" r="8.5"/><circle class="s-fill" cx="10" cy="10" r="5"/></svg>
     <span class="rv-save-note" aria-hidden="true"></span>
   </button>`;
@@ -755,8 +756,8 @@ function syncSave() {
   const on = mine.has(b.dataset.id);
   b.classList.toggle('is-on', on);
   b.setAttribute('aria-pressed', String(on));
-  b.setAttribute('aria-label', on ? 'Remove from Collection' : 'Save to Collection');
-  b.title = on ? 'In your Collection' : 'Save to Collection';
+  b.setAttribute('aria-label', on ? 'Remove from My Collection' : 'Save to My Collection');
+  b.title = on ? 'In My Collection' : 'Save to My Collection';
 }
 let sphereDirty = false;
 rvBody.addEventListener('click', async (e) => {
@@ -767,7 +768,7 @@ rvBody.addEventListener('click', async (e) => {
   const on = await mine.toggle(d);
   if (city === MY) sphereDirty = true;
   const note = b.querySelector('.rv-save-note');
-  note.textContent = on ? 'Saved to Collection' : 'Removed';
+  note.textContent = on ? 'Saved to My Collection' : 'Removed';
   b.classList.remove('is-noted'); void b.offsetWidth; b.classList.add('is-noted');
   if (on) { b.classList.remove('is-pop'); void b.offsetWidth; b.classList.add('is-pop'); }
 });
@@ -934,11 +935,11 @@ function applyCity(k, list, push) {
 function applyMine(push) {
   root.dataset.city = MY; root.dataset.home = `/${MY}/`;
   HOME_PATH = `/${MY}/`;
-  HOME_TITLE = document.title = 'Collection — Plated';
+  HOME_TITLE = document.title = 'My Collection — Plated';
   const mark = document.querySelector('.hud-top .mark');
-  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', 'Collection — Plated'); mark.innerHTML = 'COLLECTION'; }
+  if (mark) { mark.href = HOME_PATH; mark.setAttribute('aria-label', 'My Collection — Plated'); mark.innerHTML = 'MY<b>COLLECTION</b>'; }
   const canon = document.querySelector('link[rel="canonical"]'); if (canon) canon.href = `${CONFIG.SITE_URL}/${MY}/`;
-  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = 'Collection — the plates you saved';
+  const h1 = document.querySelector('h1.sr'); if (h1) h1.textContent = 'My Collection — the plates you saved';
   const lede = document.querySelector('.ix-lede'); if (lede) lede.textContent = 'The plates you saved, from every city.';
   setNoindex(true);
   renderIndex();

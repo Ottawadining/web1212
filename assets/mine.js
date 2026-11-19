@@ -3,7 +3,7 @@
 // Google or an emailed link/code), they live in public.saved_plates and follow the visitor to any
 // device; anything saved on this device before signing in is merged into the account.
 // The sign-in library only loads when someone opens the sign-in panel or is already signed in.
-import { CONFIG, LIVE, esc, fetchByIds } from './core.js?v=20261110b';
+import { CONFIG, LIVE, esc, fetchByIds } from './core.js?v=20261118a';
 
 const LOCAL = 'plated-saved';        // [[dishId, savedAtMs], ...] while signed out
 const MIRROR = 'plated-saved-acct';  // copy of the account's list, so hearts show instantly on load
@@ -148,7 +148,7 @@ const G = '<svg viewBox="0 0 18 18" aria-hidden="true"><path fill="#4285F4" d="M
 
 function view(state, email = '') {
   if (user) {
-    return `<p class="ac-kicker mono">Collection</p>
+    return `<p class="ac-kicker mono">My Collection</p>
       <h2 class="ac-title">Your collection follows you.</h2>
       <p class="ac-text">Signed in as ${esc(user.email || 'you')}. Plates you save appear on every device where you sign in.</p>
       <button type="button" class="ac-line" data-act="out">Sign out</button>`;
@@ -164,7 +164,7 @@ function view(state, email = '') {
       <p class="ac-err" role="alert"></p>
       <button type="button" class="ac-line" data-act="back">Use a different email</button>`;
   }
-  return `<p class="ac-kicker mono">Collection</p>
+  return `<p class="ac-kicker mono">My Collection</p>
     <h2 class="ac-title">Keep your collection.</h2>
     <p class="ac-text">Sign in to protect the plates you save and see them on any device. Nothing else changes.</p>
     ${SIGN_IN.google ? (GOOGLE_ID ? '<div class="ac-gslot" aria-label="Continue with Google"></div>' : `<button type="button" class="ac-btn ac-google" data-act="google">${G}<span>Continue with Google</span></button>`) : ''}
@@ -260,7 +260,7 @@ function openPanel() {
     panel.className = 'acct';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');
-    panel.setAttribute('aria-label', 'Collection account');
+    panel.setAttribute('aria-label', 'My Collection account');
     panel.innerHTML = '<button type="button" class="rv-close ac-close">Close</button><div class="ac-card"><div class="ac-body"></div></div>';
     document.body.appendChild(panel);
     panel.addEventListener('click', onClick);

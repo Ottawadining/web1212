@@ -10,6 +10,7 @@ const CITIES = {
   'new-york': { name: 'New York', base: 'https://plated.gallery/new-york' },
   vancouver: { name: 'Vancouver', base: 'https://plated.gallery/vancouver' },
   paris: { name: 'Paris', base: 'https://plated.gallery/paris' },
+  copenhagen: { name: 'Copenhagen', base: 'https://plated.gallery/copenhagen' },
 };
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -433,10 +434,16 @@ async function refreshSubCount() {
   $('sub-count').textContent = count ? `(${count})` : '';
 }
 
+// One inbox for every city: each submission carries the city it was sent from,
+// and "Add to <city>" opens the editor with that city already chosen.
 let subs = [];
+const subCity = $('sub-city');
+subCity.innerHTML = '<option value="">All cities</option>' + Object.entries(CITIES).map(([k, c]) => `<option value="${k}">${esc(c.name)}</option>`).join('');
+subCity.addEventListener('change', loadSubs);
 async function loadSubs() {
   let q = sb.from('submissions').select('*').order('created_at', { ascending: false }).limit(200);
   if (!$('show-all').checked) q = q.eq('status', 'pending');
+  if (subCity.value) q = q.eq('city', subCity.value);
   const { data, error } = await q;
   if (error) return alert(error.message);
   subs = data;
@@ -457,11 +464,11 @@ async function loadSubs() {
         ${s.instagram_url ? `<small><a href="${esc(s.instagram_url)}" target="_blank" rel="noopener">${esc(s.instagram_url)}</a></small>` : ''}
       </div>
       <div class="ctl">
-        <button class="btn btn-sm" data-act="use">Create dish</button>
+        <button class="btn btn-sm" data-act="use">Add to ${esc(cityName(s.city || 'ottawa'))}</button>
         ${s.status === 'pending' ? '<button class="btn btn-sm btn-quiet" data-act="decline">Decline</button>' : ''}
         <button class="btn btn-sm btn-danger" data-act="delete">Delete</button>
       </div>
-    </li>`).join('') : '<li class="empty">No pending submissions.</li>';
+    </li>`).join('') : `<li class="empty">No ${$('show-all').checked ? '' : 'pending '}submissions${subCity.value ? ` from ${esc(cityName(subCity.value))}` : ''}.</li>`;
 }
 $('show-all').addEventListener('change', loadSubs);
 

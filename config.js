@@ -26,6 +26,7 @@ export default {
     montreal: { name: 'Montréal', region: 'QC', country: 'CA', live: true },
     'new-york': { name: 'New York', region: 'NY', country: 'US', live: true },
     vancouver: { name: 'Vancouver', region: 'BC', country: 'CA', live: true },
-    paris: { name: 'Paris', region: 'Île-de-France', country: 'FR', live: false },
+    paris: { name: 'Paris', region: 'Île-de-France', country: 'FR', live: true },
+    copenhagen: { name: 'Copenhagen', region: 'Capital Region', country: 'DK', live: false },
   },
 };
