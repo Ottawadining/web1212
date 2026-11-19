@@ -1767,12 +1767,84 @@
   </url>
   <url>
     <loc>https://plated.gallery/paris/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/paris/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/red-mullet-espadon.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9b0b9446-e426-4e94-8d75-ec4a39537c52-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/scallops-and-hamusta-shabour.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/7248aee8-7ed9-46c3-a357-d3b68b290ae3-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/b-uf-wagyu-granite.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/554cb0dd-56ee-4330-bd7f-36472f387580-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/saint-jacques-restaurant-le-corot.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/338e1f76-1d26-499a-9e3f-1f121dc26129-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/langoustine-restaurant-l-orangerie.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9ff88a51-6324-42ab-b4fe-bfb643402ae4-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/langoustine-le-jules-verne.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e487558e-949e-4a81-8ebd-b55322fc946c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/ris-de-veau-guy-savoy.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/794a3b11-6499-4e70-8cae-af3edae638c9-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/cepes-le-pre-catalan.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/40404119-8b81-4a2f-93e9-48b7993ff991-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/royale-et-langues-d-oursin-restaurant-pierre-gagnaire.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/701cdf82-2f96-4e0d-849d-0ca18b40ae91-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/john-dory-le-gabriel.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0080000b-6287-488c-999c-da68894ff9b0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/japanese-wagyu-le-cinq.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/74db5d41-c347-4a24-97fd-6e274b439cb6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/turbot-braise-alleno.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0a91b37f-3a73-46ef-89be-4d757c3d6bc4-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/paris/dish/poularde-et-morille-plenitude.html</loc>
@@ -2121,5 +2193,14 @@
     <lastmod>2026-11-15</lastmod>
     <priority>0.7</priority>
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b2a4dea9-dd2c-4cb3-8d78-c30497450f8f-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/submit.html</loc>
+    <priority>0.3</priority>
   </url>
 </urlset>
