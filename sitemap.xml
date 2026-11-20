@@ -2196,11 +2196,71 @@
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/trout-birch-and-blackcurrant-alouette.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/25745c86-a21b-4efc-985e-1a278d77e016-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/lion-s-mane-ark.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/2c7b6858-62d2-4231-862c-3e6c3df0a2fe-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/crispy-aubergines-goldfinch.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a32cbba6-4ba2-4d46-852a-3e0e5d8cdd54-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/brown-crab-tostada-sanchez.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/af041117-72de-45fb-97d8-12d99ef370b9-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/cured-mackerel-restaurant-barr.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/59aaa2f4-909f-45c1-87b8-1a8ca900850e-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/burrata-b-st.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e0d2b08b-3bd2-42b8-8a63-e3ae4dc0cc84-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/garfish-k-dbyens-fiskebar.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/cd8ebdb9-fb58-463e-b69b-5dee33b162bf-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/candy-comb-alchemist.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/e2da7a99-8ade-415d-812f-6687e29267b1-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/raw-king-scallops-kadeau.html</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1aaff803-6424-4834-bf28-333f30dbd497-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/yellow-beets-geranium.html</loc>
+    <lastmod>2026-11-19</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0b58f022-a3a1-4739-90d9-428295bdd07c-1600.webp</image:loc></image:image>
   </url>
 </urlset>
