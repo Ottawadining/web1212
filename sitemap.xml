@@ -2196,12 +2196,42 @@
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/puffed-carrot-skin-marv-and-ben.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/f7a8f66f-c775-4bc1-b73b-98d9716f5ed6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/barbecued-norwegian-langoustine-koan.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/aa6910c2-1426-4466-9855-7dd4e8d88209-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/seabass-iluka.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b9febc9b-43e4-4acf-9cf5-3c6e52e46916-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/tartare-surt.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b38ad60c-b73d-4eb3-aeef-a721ec790fe0-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/tortellini-in-brodo-barabba.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/4ff02556-6582-40c2-93e9-b28c0254915c-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/dish/trout-birch-and-blackcurrant-alouette.html</loc>
