@@ -2196,12 +2196,24 @@
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/</loc>
-    <lastmod>2026-11-22</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/mushroom-risotto-esmee.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/b509985b-d3c8-4ae4-ad2d-a6b3d15db197-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/lobster-royale-marchal.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d6cdbe59-f9c5-45e2-878a-d6283f3611cb-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/dish/puffed-carrot-skin-marv-and-ben.html</loc>
