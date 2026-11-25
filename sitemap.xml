@@ -2210,6 +2210,24 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://plated.gallery/copenhagen/dish/vitello-tonnato-kanalen.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/1613f259-32e6-4b26-8e85-06a3fea07a77-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/tatar-pal-gade.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/55a0e48e-b9d6-4a65-91f4-f6ebaedcc35a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/roasted-chicken-restaurant-bobe.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/50e63009-c8c2-4104-9062-15a03bb9d379-1600.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://plated.gallery/copenhagen/dish/grilled-ribeye-botschaft.html</loc>
     <lastmod>2026-11-25</lastmod>
     <priority>0.7</priority>
