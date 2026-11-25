@@ -1767,12 +1767,18 @@
   </url>
   <url>
     <loc>https://plated.gallery/paris/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/paris/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/paris/dish/poireau-lava.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a423b5af-0d7c-4f1b-b944-59fefc596244-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/paris/dish/red-mullet-espadon.html</loc>
@@ -2196,12 +2202,60 @@
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/grilled-ribeye-botschaft.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/64858507-d9c8-44d4-a49e-911f0088b94b-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/tatar-norrlyst.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ad2df768-26d1-4ea7-9f8b-6239a0f2e6c5-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/smoked-trout-radio.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/02d756be-7135-463a-985e-d840bdb1a3c6-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/hiramasa-uformel.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9e0b4d9e-4bc7-4d3c-b0cf-179a4f28b30a-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/goat-cheese-bergamote-honey-and-olive-oil-texture.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/a968c623-e999-4be4-8be9-8876b6d49137-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/steamed-vongole-propaganda.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/9a85b710-07f8-4f96-a5ad-04b77c20ae5c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/mackerel-with-elderflower-and-wood-sorrel-restaurant-aoc.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0ea1c393-9b0d-49bd-9134-dfaa598de8b7-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/beef-massa-man-curry-kiin-kiin.html</loc>
+    <lastmod>2026-11-25</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/70eb84e4-f7c8-4ecc-81a2-165093445fb7-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/dish/mushroom-risotto-esmee.html</loc>
