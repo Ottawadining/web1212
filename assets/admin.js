@@ -11,6 +11,7 @@ const CITIES = {
   vancouver: { name: 'Vancouver', base: 'https://plated.gallery/vancouver' },
   paris: { name: 'Paris', base: 'https://plated.gallery/paris' },
   copenhagen: { name: 'Copenhagen', base: 'https://plated.gallery/copenhagen' },
+  chicago: { name: 'Chicago', base: 'https://plated.gallery/chicago' },
 };
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },

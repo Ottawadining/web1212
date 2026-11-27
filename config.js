@@ -27,6 +27,7 @@ export default {
     'new-york': { name: 'New York', region: 'NY', country: 'US', live: true },
     vancouver: { name: 'Vancouver', region: 'BC', country: 'CA', live: true },
     paris: { name: 'Paris', region: 'Île-de-France', country: 'FR', live: true },
-    copenhagen: { name: 'Copenhagen', region: 'Capital Region', country: 'DK', live: false },
+    copenhagen: { name: 'Copenhagen', region: 'Capital Region', country: 'DK', live: true },
+    chicago: { name: 'Chicago', region: 'IL', country: 'US', live: false },
   },
 };
