@@ -2202,12 +2202,42 @@
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/submit.html</loc>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/ganache-chocolate-and-blueberry-consomme-parsley-salon.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/602a1728-007e-4dc4-9be4-6d7cd756f543-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/chicken-pot-pie-fasangaarden.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ddebae68-acba-40e7-9d95-b608fc434455-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/barley-gelato-with-strawberries-levi.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/d92d8191-2e6b-4ed0-aedb-47b7876d1025-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/beetroot-tartare-bistro-lupa.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/295066f8-ab3b-4dc4-b7e6-4ac9e1596b67-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/copenhagen/dish/spring-risotto-calma.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/ddc3e902-5327-43ca-9d76-9818130c3a2c-1600.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://plated.gallery/copenhagen/dish/jordb-r-melee.html</loc>
@@ -2436,5 +2466,14 @@
     <lastmod>2026-11-19</lastmod>
     <priority>0.7</priority>
     <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/0b58f022-a3a1-4739-90d9-428295bdd07c-1600.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://plated.gallery/chicago/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plated.gallery/chicago/submit.html</loc>
+    <priority>0.3</priority>
   </url>
 </urlset>
