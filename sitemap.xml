@@ -2476,4 +2476,10 @@
     <loc>https://plated.gallery/chicago/submit.html</loc>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://plated.gallery/chicago/dish/uni-cloud-and-lobster-custard-smyth.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://sxqogesrijgbvdqgqzti.supabase.co/storage/v1/object/public/dishes/2026/7b5f0f9c-215a-4584-924b-28f495863d50-1600.webp</image:loc></image:image>
+  </url>
 </urlset>
